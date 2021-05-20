@@ -119,6 +119,7 @@ p {
 h2 {
   color: #FFFFFF;
 }
+
 a {
   color: #DBDBDB;
    text-decoration: none;
