@@ -11,7 +11,7 @@
       <div class="input-group">
         <input v-model="credentials.password" type="password" class="form-control" placeholder="비밀번호">
       </div>
-      <button @click="signup" class="btn-grad btn-size btn-text m-3">Login</button>
+      <button @click="signup" class="btn-grad btn-size btn-text m-3" :disabled="isDisabled">Login</button>
     </div>
   </div>
 </template>
@@ -40,6 +40,7 @@ export default {
           console.log(res)
           this.credentials.username = null
           this.credentials.password = null
+          this.$router.push({ name: 'Main' })
         })
         .catch(err => {
           console.log(err)
@@ -49,12 +50,12 @@ export default {
       this.$router.push({ name: 'SignUp' })
     }
   },
-  watch: {
+  computed: {
     isDisabled: function () {
-      if (this.credentials === false) {
-        return true
+      if ( this.credentials.username && this.credentials.password) {
+       return false
       } else {
-        return false
+        return  true
       }
     }
   }
@@ -118,13 +119,15 @@ p {
 h2 {
   color: #FFFFFF;
 }
-
 a {
   color: #DBDBDB;
    text-decoration: none;
 }
-
 a:hover {
   color: grey;
+}
+.btn-grad:disabled {
+  opacity: 0.5;
+  background-position: right;
 }
 </style>
