@@ -61,7 +61,7 @@ export default {
   top: 0;
   left: 0;
 
-  background-image: url('https://gizmostory.com/wp-content/uploads/2021/04/Inception-2010.jpg');
+  background-image: url('~@/assets/Inception.png');
   background-size: 100% 100%;
 
 }
