@@ -8,7 +8,7 @@
         <input v-model="credentials.username" type="text" class="form-control block" placeholder="이름(2자 이상)">
       </div>
       <div class="input-group">
-        <input v-model="credentials.password" type="password" class="form-control" placeholder="영문, 숫자, 특문 증 2개 조합 10자 이상">
+        <input v-model="credentials.password" type="password" class="form-control" placeholder="영문, 숫자, 특문 중 2개 조합 10자 이상">
       </div>
       <div class="input-group">
         <input v-model="credentials.passwordConfirmation" type="password" class="form-control" placeholder="위 비밀번호를 그대로 쳐주세요.">
