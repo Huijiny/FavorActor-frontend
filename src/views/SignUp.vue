@@ -30,7 +30,7 @@ export default {
         username: null,
         password: null,
         passwordConfirmation: null,
-      }
+      },
     }
   },
   methods: {
@@ -50,6 +50,15 @@ export default {
         .catch(err => {
           console.log(err)
         })
+    }
+  },
+  watch: {
+    isDisabled: function () {
+      if (this.credentials === false) {
+        return true
+      } else {
+        return false
+      }
     }
   }
 }
@@ -79,6 +88,10 @@ export default {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
+}
+.btn-grad:disabled {
+  /* background-image: linear-gradient(to left, #FC466B 0%, #4A00E0  50%, #FC466B  100%) */
+  background-color: black;
 }
 .bgimg {
   /* Set rules to fill background */
