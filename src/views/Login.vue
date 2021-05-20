@@ -1,17 +1,17 @@
 <template>
   <div class="bgimg d-flex justify-content-center align-items-center">
     <div class="auth-size">
-      <div class="d-flex justify-content-left">
+      <div class="d-flex justify-content-between align-items-end">
         <h2>Login</h2>
+        <a class="m-1" @click="routeToSignUp">3초 가입하러 가기</a>
       </div>
       <div class="input-group">
         <input v-model="credentials.username" type="text" class="form-control block" placeholder="이름(2자 이상)">
       </div>
       <div class="input-group">
-        <input v-model="credentials.password" type="password" class="form-control" placeholder="영문, 숫자, 특문 중 2개 조합 10자 이상">
+        <input v-model="credentials.password" type="password" class="form-control" placeholder="비밀번호">
       </div>
       <button @click="signup" class="btn-grad btn-size btn-text m-3">Login</button>
-      <p >저희 서비스는 무료입니다. 회원가입이 간단하죠.</p>
     </div>
   </div>
 </template>
@@ -33,19 +33,20 @@ export default {
     signup: function () {
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/accounts/login',
+        url: 'http://127.0.0.1:8000/accounts/api-token-auth/',
         data: this.credentials,
       })
         .then(res => {
           console.log(res)
           this.credentials.username = null
           this.credentials.password = null
-          this.credentials.passwordConfirmation = null
-          // this.$router.push({ name: 'Login' })
         })
         .catch(err => {
           console.log(err)
         })
+    },
+    routeToSignUp: function () {
+      this.$router.push({ name: 'SignUp' })
     }
   },
   watch: {
@@ -116,5 +117,14 @@ p {
 
 h2 {
   color: #FFFFFF;
+}
+
+a {
+  color: #DBDBDB;
+   text-decoration: none;
+}
+
+a:hover {
+  color: grey;
 }
 </style>
