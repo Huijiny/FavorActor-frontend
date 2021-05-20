@@ -1,10 +1,8 @@
 <template>
   <div class="bgimg d-flex justify-content-center align-items-center">
-    <div class="auth-size">
-      <div class="d-flex justify-content-left">
-        <h2>당신이 좋아하는 배우에 집중해보세요</h2>
-      </div>
-      <button @click="signup" class="btn-grad btn-size btn-text m-3">시작해보기</button>
+    <div>
+      <h2>당신이 좋아하는 배우에 집중해보세요</h2>
+      <button @click="routeToLogin" class="btn-grad btn-size btn-text m-3">시작해보기</button>
       <p >저희와 함께할 준비가 되셨나요?</p>
     </div>
   </div>
@@ -14,7 +12,12 @@
 
 export default {
   name: 'Firstpage',
-      }
+  methods: {
+    routeToLogin: function () {
+      this.$router.push({ name: 'Login' })
+    }
+  }
+}
 
 </script>
 
@@ -65,9 +68,7 @@ export default {
   background-size: 100% 100%;
 
 }
-.auth-size {
-  width: 20%;
-}
+
 p {
   color: #DBDBDB;
 }

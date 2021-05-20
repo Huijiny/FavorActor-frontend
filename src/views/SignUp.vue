@@ -45,7 +45,7 @@ export default {
           this.credentials.username = null
           this.credentials.password = null
           this.credentials.passwordConfirmation = null
-          // this.$router.push({ name: 'Login' })
+          this.$router.push({ name: 'Login' })
         })
         .catch(err => {
           console.log(err)
