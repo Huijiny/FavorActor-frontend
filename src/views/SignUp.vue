@@ -13,7 +13,7 @@
       <div class="input-group">
         <input v-model="credentials.passwordConfirmation" type="password" class="form-control" placeholder="위 비밀번호를 그대로 쳐주세요.">
       </div>
-      <button @click="signup" class="btn-grad btn-size btn-text m-3">회원가입</button>
+      <button @click="signup" class="btn-grad btn-size btn-text m-3" :disabled="isDisabled">회원가입</button>
       <p >저희 서비스는 무료입니다. 회원가입이 간단하죠.</p>
     </div>
   </div>
@@ -45,19 +45,20 @@ export default {
           this.credentials.username = null
           this.credentials.password = null
           this.credentials.passwordConfirmation = null
-          // this.$router.push({ name: 'Login' })
+          this.$router.push({ name: 'Login' })
         })
         .catch(err => {
           console.log(err)
         })
     }
   },
-  watch: {
+  computed: {
     isDisabled: function () {
-      if (this.credentials === false) {
-        return true
+      console.log(this.credentials.username)
+      if ( this.credentials.username && this.credentials.password && this.credentials.passwordConfirmation ) {
+       return false
       } else {
-        return false
+        return  true
       }
     }
   }
@@ -89,10 +90,6 @@ export default {
   color: #fff;
   text-decoration: none;
 }
-.btn-grad:disabled {
-  /* background-image: linear-gradient(to left, #FC466B 0%, #4A00E0  50%, #FC466B  100%) */
-  background-color: black;
-}
 .bgimg {
   /* Set rules to fill background */
   min-height: 100%;
@@ -120,5 +117,10 @@ p {
 
 h2 {
   color: #FFFFFF;
+}
+
+.btn-grad:disabled {
+  opacity: 0.5;
+  background-position: right;
 }
 </style>

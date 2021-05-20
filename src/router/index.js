@@ -3,12 +3,12 @@ import VueRouter from 'vue-router'
 import SignUp from '../views/SignUp.vue'
 import FirstPage from '../views/FirstPage.vue'
 import Login from '../views/Login.vue'
-
+import Main from '../views/Main.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/FirstPage',
+    path: '/',
     name: 'FirstPage',
     component: FirstPage
   },
@@ -18,9 +18,14 @@ const routes = [
     component: SignUp,
   },
   {
-    path: '/Login',
+    path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/main',
+    name: 'Main',
+    component: Main
   },
 ]
 
