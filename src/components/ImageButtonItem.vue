@@ -5,8 +5,8 @@
     </div>
     <div class="overlay">
       <div class="text">
-        <h5>{{ item.actorname }}</h5>
-        <button class="btn btn-link"><i class="fas fa-heart like-button"></i></button>
+        <h4>{{ item.actorname }}</h4>
+        <button class="btn btn-link mt-2" @click="likeButton"><i class="fa-heart like-button" :class="{ 'fas': like, 'far': !like }"></i></button>
       </div>
     </div>
   </div>
@@ -18,6 +18,16 @@ export default {
   props: {
     item: {
       type: Object,
+    }
+  },
+  data: function () {
+    return {
+      like: false
+    }
+  },
+  methods: {
+    likeButton: function () {
+      this.like = !this.like
     }
   }
 }
@@ -62,7 +72,7 @@ export default {
   color: white;
   font-size: 20px;
   position: absolute;
-  top: 50%;
+  top: 85%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -72,6 +82,10 @@ export default {
 
 .like-button {
   color: #FF89B6;
-  font-size: 30px;
+  font-size: 40px;
+}
+
+h5 {
+  margin: 0px;
 }
 </style>
