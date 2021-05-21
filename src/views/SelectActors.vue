@@ -1,6 +1,6 @@
 <template>
-<div class="container">
-  <div class="navi mt-5 mb-3">
+<div class="container  navi-margin">
+  <div class="navi css-q46ro5 pt-4 pb-5">
     <div class="guide-text">
       <h5><span>{{ user.username }}</span>님, 당신의 취향을 알고싶어요! </h5>
       <h5>좋아하는 배우를 선택해주세요.</h5>
@@ -112,5 +112,21 @@ export default {
   }
   .navi {
     position: sticky;
+  }
+  .css-q46ro5 {
+    /* background: linear-gradient( to top, rgba(18,18,18,0), rgba(18,18,18,0.6) 10%, rgba(18,18,18,0.8) 16%, rgba(18,18,18,1) 29% );
+    height: 237px; */
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 400;
+    background: linear-gradient( to top, rgba(18,18,18,0), rgba(18,18,18,1) 20% );
+    text-align: center;
+    width: 100%;
+    height: 100px;
+  }
+  .navi-margin {
+    margin-top: 100px;
   }
 </style>
