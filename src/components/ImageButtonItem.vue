@@ -3,10 +3,10 @@
     <div class="center-cropped">
       <img :src="item.actor_poster_path"/>
     </div>
-    <div class="overlay">
+    <div :class="{ 'item-selected ': liked, 'overlay': !liked }">
       <div class="text">
         <h4>{{ item.actorname }}</h4>
-        <button class="btn btn-link mt-2" @click="likeButton"><i class="fa-heart like-button" :class="{ 'fas': like, 'far': !like }"></i></button>
+        <button class="btn mt-2" @click="likeButton"><i class="fa-heart like-button" :class="{ 'fas': liked, 'far': !liked }"></i></button>
       </div>
     </div>
   </div>
@@ -22,12 +22,13 @@ export default {
   },
   data: function () {
     return {
-      like: false
+      liked: false,
+      selected: false,
     }
   },
   methods: {
     likeButton: function () {
-      this.like = !this.like
+      this.liked = !this.liked
     }
   }
 }
@@ -39,45 +40,57 @@ export default {
   position: relative;
   margin: 1% 1%;
 }
-  div {
-    display: block
-  }
-  .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .3s ease;
-    background-color: rgba(18, 17, 24, 0.5);
+div {
+  display: block
 }
+.item-selected{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(18, 17, 24, 0.5);
+  opacity: 1;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: rgba(18, 17, 24, 0.5);
+}
+
 .item-wrapper:hover .overlay {
   opacity: 1;
 }
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover; 
-    object-position: center;
-  }
-  /* * ::before, ::after {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-  } */
-  .text {
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover; 
+  object-position: center;
+}
+* ::before, ::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+.text {
+color: white;
+font-size: 20px;
+position: absolute;
+top: 85%;
+left: 50%;
+-webkit-transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+text-align: center;
 }
 
 .like-button {
