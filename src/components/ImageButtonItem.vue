@@ -29,6 +29,12 @@ export default {
   methods: {
     likeButton: function () {
       this.liked = !this.liked
+      if (this.liked == true) {
+        console.log('asfd')
+        this.$store.dispatch('setFavoriteActors', this.item)
+      } else {
+        this.$store.dispatch('removeFavoriteActors', this.item)
+      }
     }
   },
   computed: {
