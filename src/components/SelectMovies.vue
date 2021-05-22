@@ -1,43 +1,37 @@
 <template>
-<div class="wrapper">
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 d-flex justify-content-center">
-    <ImageButtonItem 
-      v-for="(movie, idx) in movieList"
-      :key="idx"
-      :item="movie"
-    />
+  <div class="wrapper">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 d-flex justify-content-center">
+      <SelectMoviesItem 
+        v-for="(movie, idx) in movieList"
+        :key="idx"
+        :item="movie"
+      />
+    </div>
   </div>
-</div>
 </template>
 
 <script>
-import ImageButtonItem from './ImageButtonItem.vue'
+import SelectMoviesItem from './SelectMoviesItem.vue'
 import axios from 'axios'
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'SelectActors',
+  name: 'SelectMovies',
   components: {
-    ImageButtonItem,
+    SelectMoviesItem,
   },
   data: function () {
     return {
-      user: {},
       movieList: [],
     }
   },
   computed: {
     ...mapGetters([
       'getToken',
-      'getUser',
     ]),
-    username: function () {
-      return this.$store.user.username
-    }
   },
   created: function () {
     const tokenObject = this.getToken
-    this.user = this.getUser
     console.log(tokenObject)
     axios({
       method: 'GET',
@@ -45,7 +39,7 @@ export default {
       headers: tokenObject
     })
       .then(res => {
-        this.actorList = res.data
+        this.movieList = res.data
         console.log(res)
       })
       .catch(err => {
@@ -66,8 +60,6 @@ export default {
     position: sticky;
   }
   .css-q46ro5 {
-    /* background: linear-gradient( to top, rgba(18,18,18,0), rgba(18,18,18,0.6) 10%, rgba(18,18,18,0.8) 16%, rgba(18,18,18,1) 29% );
-    height: 237px; */
     position: fixed;
     top: 0;
     right: 0;
