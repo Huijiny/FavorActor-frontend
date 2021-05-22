@@ -1,11 +1,11 @@
 <template>
   <div class="item-wrapper col">
     <div class="center-cropped">
-      <img :src="getImage"/>
+      <img :src="posterPath"/>
     </div>
     <div :class="{ 'item-selected ': liked, 'overlay': !liked }">
       <div class="text">
-        <h4>{{ item.name }}</h4>
+        <h4>{{ item.title }}</h4>
         <button class="btn mt-2" @click="likeButton"><i class="fa-heart like-button" :class="{ 'fas': liked, 'far': !liked }"></i></button>
       </div>
     </div>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'ImageButtonItem',
+  name: 'SelectMoviesItem',
   props: {
     item: {
       type: Object,
@@ -28,18 +28,19 @@ export default {
   },
   methods: {
     likeButton: function () {
-      this.liked = !this.liked
+      this.liked =! this.liked
+      console.log(this.liked)
       if (this.liked == true) {
-        console.log('asfd')
-        this.$store.dispatch('setFavoriteActors', this.item)
+        this.$store.dispatch('setFavoriteMovies', this.item)
       } else {
-        this.$store.dispatch('removeFavoriteActors', this.item)
+        this.$store.dispatch('removeFavoriteMovies', this.item)
       }
     }
   },
   computed: {
-    getImage: function () {
-      return `https://image.tmdb.org/t/p/w500${this.item.profile_path}`
+    posterPath: function () {
+      console.log(this.item.poster_path)
+      return `https://image.tmdb.org/t/p/w500${this.item.poster_path}`
     }
   }
 }

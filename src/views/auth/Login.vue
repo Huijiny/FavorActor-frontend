@@ -37,7 +37,6 @@ export default {
         data: this.credentials,
       })
         .then(res => {
-          console.log(res)
           localStorage.setItem('jwt', res.data.token)
           this.credentials.username = null
           this.credentials.password = null
