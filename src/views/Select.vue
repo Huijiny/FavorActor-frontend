@@ -2,14 +2,20 @@
 <div class="wrapper">
     <div class="navi css-q46ro5 pt-4 pb-5">
       <div class="guide-text">
-        <h5><span>{{ user.username }}</span>님, 당신의 취향을 알고싶어요! </h5>
-        <h5>좋아하는 배우를 선택해주세요.</h5>
+        <h5><span class="username">{{ user.username }}</span>님, 당신의 취향을 알고싶어요! </h5>
+        <h5>좋아하는 
+          <span v-if="isActorPage">배우</span>
+          <span v-else>영화</span>
+          를 선택해주세요.</h5>
       </div>
-      <span class="next-btn" @click="routeToMovieSelect">건너뛰기</span>
+      <span class="next-btn" @click="routeToMovieSelect">
+        <span v-if="isActorPage">건너뛰기</span>
+        <span v-else>완료하기</span>
+        </span>
     </div>
 
   <SelectActors v-if="isActorPage"/>
-  <SelectMovies v-if="isMoviePage"/>  
+  <SelectMovies v-else/>  
 </div>
 
   
@@ -54,7 +60,7 @@ export default {
   h5 {
     color: #FFFFFF;
   }
-  span {
+  .username {
     color: #FF89B6;
   }
   .navi {

@@ -22,19 +22,16 @@ export default {
   },
   data: function () {
     return {
-      user: {},
       actorList: [],
     }
   },
   computed: {
     ...mapGetters([
       'getToken',
-      'getUser',
     ]),
   },
   created: function () {
     const tokenObject = this.getToken
-    this.user = this.getUser
     console.log(tokenObject)
     axios({
       method: 'GET',
@@ -43,7 +40,6 @@ export default {
     })
       .then(res => {
         this.actorList = res.data
-        console.log(res)
       })
       .catch(err => {
         console.log(err)
