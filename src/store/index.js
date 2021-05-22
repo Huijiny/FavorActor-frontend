@@ -19,7 +19,18 @@ export default new Vuex.Store({
       state.usertoken = token
     },
     SET_USER_DATA: function (state, userdata) {
-      state.user = userdata
+      state.user.username = userdata.username
+      state.user.favoriteActors = userdata.favor_actors_id
+      state.user.favoriteMovies = userdata.favor_movies_id
+    },
+    SET_FAVOR_ACTORS: function (state, actor) {
+      state.user.favoriteActors.push(actor)
+    },
+    REMOVE_FAVOR_ACTORS: function (state, actor) {
+      console.log(state.user)
+      state.user.favoriteActors = state.user.favoriteActors.filter(act => {
+        return act !== actor
+      })
     }
   },
   actions: {
@@ -45,6 +56,12 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })      
+    },
+    setFavoriteActors: function ({ commit }, actor) {
+      commit('SET_FAVOR_ACTORS', actor)
+    },
+    removeFavoriteActors: function ({ commit }, actor) {
+      commit('REMOVE_FAVOR_ACTORS', actor)
     }
   },
   getters: {
