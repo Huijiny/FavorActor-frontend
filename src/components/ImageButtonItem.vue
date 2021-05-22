@@ -1,11 +1,11 @@
 <template>
   <div class="item-wrapper col">
     <div class="center-cropped">
-      <img :src="item.actor_poster_path"/>
+      <img :src="getImage"/>
     </div>
     <div :class="{ 'item-selected ': liked, 'overlay': !liked }">
       <div class="text">
-        <h4>{{ item.actorname }}</h4>
+        <h4>{{ item.name }}</h4>
         <button class="btn mt-2" @click="likeButton"><i class="fa-heart like-button" :class="{ 'fas': liked, 'far': !liked }"></i></button>
       </div>
     </div>
@@ -29,6 +29,11 @@ export default {
   methods: {
     likeButton: function () {
       this.liked = !this.liked
+    }
+  },
+  computed: {
+    getImage: function () {
+      return `https://image.tmdb.org/t/p/w500${this.item.profile_path}`
     }
   }
 }

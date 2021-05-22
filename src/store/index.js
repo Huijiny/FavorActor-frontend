@@ -47,6 +47,15 @@ export default new Vuex.Store({
         })      
     }
   },
+  getters: {
+    getToken: function (status) {
+      const token = { Authorization: `JWT ${status.usertoken}` }
+      return token
+    },
+    getUser: function (status) {
+      return status.user
+    }
+  },
   modules: {
   }
 })

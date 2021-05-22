@@ -19,6 +19,8 @@
 
 <script>
 import ImageButtonItem from '../../src/components/ImageButtonItem.vue'
+import axios from 'axios'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'SelectActors',
@@ -27,79 +29,33 @@ export default {
   },
   data: function () {
     return {
-      user: {
-        usertoken: '',
-        username: '꼬꼬',
-        favorActors: [],
-      },
-      actorList: [
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-        {
-          'actorname': '김수현',
-          'actor_poster_path': 'https://img.hankyung.com/photo/202008/BF.23393413.1.jpg'
-        },
-      ]
+      user: {},
+      actorList: [],
     }
-    
+  },
+  computed: {
+    ...mapGetters([
+      'getToken',
+    ]),
+    username: function () {
+      return this.$store.user.username
+    }
+  },
+  created: function () {
+    const tokenObject = this.getToken
+    console.log(tokenObject)
+    axios({
+      method: 'GET',
+      url: `http://127.0.0.1:8000/movies/new-actors/`,
+      headers: tokenObject
+    })
+      .then(res => {
+        this.actorList = res.data
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 }
 </script>
