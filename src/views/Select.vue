@@ -36,13 +36,16 @@ export default {
     return {
       user: {},
       isActorPage: true,
-      isMoviePage: false,
     }
   },
   methods: {
     routeToMovieSelect: function () {
-      this.isActorPage = false
-      this.isMoviePage =  true
+      if (this.isActorPage == true) {
+        this.isActorPage = false
+      } else {
+        this.$store.dispatch('getMainItems')
+      }
+      
     }
   },
   computed: {

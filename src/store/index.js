@@ -39,6 +39,10 @@ export default new Vuex.Store({
       state.user.favoriteMovies = state.user.favoriteMovies.filter(mov => {
         return mov !== movie
       })
+    },
+    SET_MAIN_ITEMS: function (state) {
+      // 여기서 받아올 데이터를 state에 main에 들어갈 애들로 정하고, getters에 해놓은다음 메인에 들어갈 때마다 같은 데이터가 뿌려지도록 함.
+      console.log(state)
     }
   },
   actions: {
@@ -58,7 +62,7 @@ export default new Vuex.Store({
           if (res.favor_actors_id.length == 0) {
             router.push({ name: 'Select' })
           } else {
-            router.push({ name: 'Main'})
+            this.getMainItems() // 아니면 getMainItems를 하게됌.
           }
         })
         .catch(err => {
@@ -77,6 +81,26 @@ export default new Vuex.Store({
     removeFavoriteMovies: function ({ commit }, movie) {
       commit('REMOVE_FAVOR_MOVIES', movie)
     },
+    getMainItems: function ({ commit }) {
+      const data = { 'user-favorite-actors': this.state.user.favoriteActors,
+                     'user-favorite-movies': this.state.user.favoriteMovies
+                  }
+      axios({
+        method: 'POST',
+        url: 'http://127.0.0.1:8000/movies/main/',
+        body: data,
+        headers: this.getters.getToken
+      })
+        .then(res => {
+          commit('SET_MAIN_ITEMS')
+          console.log(res)
+          router.push({ name: 'Main'})
+
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
   },
   getters: {
     getToken: function (status) {
