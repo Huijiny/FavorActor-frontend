@@ -11,7 +11,7 @@
       <div class="input-group">
         <input v-model="credentials.password" type="password" class="form-control" placeholder="비밀번호">
       </div>
-      <button @click="signup" class="btn-grad btn-size btn-text m-3" :disabled="isDisabled">Login</button>
+      <button @click="login" class="btn-grad btn-size btn-text m-3" :disabled="isDisabled">Login</button>
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
     }
   },
   methods: {
-    signup: function () {
+    login: function () {
       axios({
         method: 'post',
         url: 'http://127.0.0.1:8000/accounts/api-token-auth/',
@@ -38,9 +38,10 @@ export default {
       })
         .then(res => {
           console.log(res)
+          localStorage.setItem('jwt', res.data.token)
           this.credentials.username = null
           this.credentials.password = null
-          this.$router.push({ name: 'Main' })
+          this.$store.dispatch('setUserToken', res.data.token)
         })
         .catch(err => {
           console.log(err)
