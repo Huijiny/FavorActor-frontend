@@ -4,7 +4,9 @@ import SignUp from '../views/auth/SignUp.vue'
 import FirstPage from '../views/auth/FirstPage.vue'
 import Login from '../views/auth/Login.vue'
 import Main from '../views/Main.vue'
-import SelectActors from '../views/SelectActors.vue'
+import Select from '../views/Select.vue'
+import Profile from '../views/Profile.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,10 +31,15 @@ const routes = [
     component: Main
   },
   {
-    path:'/selectActors',
-    name: 'SelectActors',
-    component: SelectActors,
-  }
+    path:'/select',
+    name: 'Select',
+    component: Select,
+  },
+  {
+    path:'/profile',
+    name: 'Profile',
+    component: Profile,
+  },
 ]
 
 const router = new VueRouter({

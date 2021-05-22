@@ -48,7 +48,7 @@ export default new Vuex.Store({
         })
         .then(res => {
           if (res.favor_actors_id.length == 0) {
-            router.push({ name: 'SelectActors' })
+            router.push({ name: 'Select' })
           } else {
             router.push({ name: 'Main'})
           }
