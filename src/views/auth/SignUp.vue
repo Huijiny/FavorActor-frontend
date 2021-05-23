@@ -91,21 +91,16 @@ export default {
   text-decoration: none;
 }
 .bgimg {
-  /* Set rules to fill background */
-  min-height: 100%;
-  min-width: 1024px;
-    
   /* Set up proportionate scaling */
   width: 100%;
-  height: auto;
+  height: 100%;
     
   /* Set up positioning */
   position: fixed;
-  top: 0;
-  left: 0;
 
   background-image: url('~@/assets/Joker.png');
-  background-size: 100% 100%;
+  background-position: center;
+  background-size: cover;
 
 }
 .auth-size {
