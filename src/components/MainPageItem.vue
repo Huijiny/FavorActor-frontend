@@ -1,12 +1,11 @@
 <template>
   <div class="item-wrapper col">
     <div class="center-cropped">
-      <img :src="posterPath"/>
+      <img :src="getImage"/>
     </div>
-    <div :class="{ 'item-selected ': liked, 'overlay': !liked }">
+    <div class="overlay">
       <div class="text">
-        <h4>{{ item.title }}</h4>
-        <button class="btn mt-2" @click="likeButton"><i class="fa-heart like-button" :class="{ 'fas': liked, 'far': !liked }"></i></button>
+        <h4>{{ item.name }}</h4>
       </div>
     </div>
   </div>
@@ -14,7 +13,7 @@
 
 <script>
 export default {
-  name: 'SelectMoviesItem',
+  name: 'MainPageItem',
   props: {
     item: {
       type: Object,
@@ -22,25 +21,13 @@ export default {
   },
   data: function () {
     return {
-      liked: false,
-      selected: false,
     }
   },
   methods: {
-    likeButton: function () {
-      this.liked =! this.liked
-      console.log(this.liked)
-      if (this.liked == true) {
-        this.$store.dispatch('setFavoriteMovies', this.item.movie_id)
-      } else {
-        this.$store.dispatch('removeFavoriteMovies', this.item.movie_id)
-      }
-    }
   },
   computed: {
-    posterPath: function () {
-      console.log(this.item.poster_path)
-      return `https://image.tmdb.org/t/p/w500${this.item.poster_path}`
+    getImage: function () {
+      return `https://image.tmdb.org/t/p/w500${this.item.profile_path}`
     }
   }
 }
