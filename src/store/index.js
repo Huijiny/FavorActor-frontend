@@ -20,8 +20,8 @@ export default new Vuex.Store({
     },
     SET_USER_DATA: function (state, userdata) {
       state.user.username = userdata.username
-      state.user.favoriteActors = userdata.favor_actors_id
-      state.user.favoriteMovies = userdata.wish_movies_id
+      state.user.favoriteActors = userdata.favorite_actors
+      state.user.favoriteMovies = userdata.favorite_movies
     },
     SET_FAVOR_ACTORS: function (state, actor) {
       state.user.favoriteActors.push(actor)
@@ -59,7 +59,7 @@ export default new Vuex.Store({
           return res.data
         })
         .then(res => {
-          if (res.favor_actors_id.length == 0) {
+          if (res.favorite_actors.length == 0) {
             router.push({ name: 'Select' })
           } else {
             this.getMainItems() // 아니면 getMainItems를 하게됌.
@@ -82,24 +82,29 @@ export default new Vuex.Store({
       commit('REMOVE_FAVOR_MOVIES', movie)
     },
     getMainItems: function ({ commit }) {
-      const data = { 'user-favorite-actors': this.state.user.favoriteActors,
-                     'user-favorite-movies': this.state.user.favoriteMovies
-                  }
+      const config = {
+        Authorization: `JWT ${this.state.usertoken}`,
+      }
+      console.log(config)
+      const data = {
+        'favorite_actors': this.state.user.favoriteActors,
+        'favorite_movies': this.state.user.favoriteMovies
+      }
       axios({
-        method: 'POST',
+        method: 'post',
         url: 'http://127.0.0.1:8000/movies/main/',
-        body: data,
-        headers: this.getters.getToken
+        data,
+        headers: config,
       })
         .then(res => {
           commit('SET_MAIN_ITEMS')
           console.log(res)
           router.push({ name: 'Main'})
-
         })
         .catch(err => {
           console.log(err)
         })
+        
     }
   },
   getters: {

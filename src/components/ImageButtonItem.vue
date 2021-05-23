@@ -31,9 +31,9 @@ export default {
       this.liked = !this.liked
       if (this.liked == true) {
         console.log('asfd')
-        this.$store.dispatch('setFavoriteActors', this.item)
+        this.$store.dispatch('setFavoriteActors', this.item.actor_id)
       } else {
-        this.$store.dispatch('removeFavoriteActors', this.item)
+        this.$store.dispatch('removeFavoriteActors', this.item.actor_id)
       }
     }
   },
