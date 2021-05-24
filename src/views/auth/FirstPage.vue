@@ -25,7 +25,6 @@ export default {
 
 .btn-grad {background-image: linear-gradient(to left, #FC466B 0%, #4A00E0  50%, #FC466B  100%)}
 .btn-grad {
-  margin: 10px;
   padding: 10px 45px;
   transition: 0.5s;
   background-size: 200% auto;
@@ -37,7 +36,7 @@ export default {
   font-family: 'Noto Sans KR', sans-serif;
 }
 .btn-size {
-  width: 70%;
+  width: 45%;
   border-radius: 30px;
   border: none;
 }
