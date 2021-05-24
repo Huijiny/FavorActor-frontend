@@ -99,7 +99,7 @@ export default {
   /* Set up positioning */
   position: fixed;
 
-  background-image: url('~@/assets/Tenet.png');
+  background-image: url('~@/assets/Joker.png');
   background-position: center;
   background-size: cover;
 }

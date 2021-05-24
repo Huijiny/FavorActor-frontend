@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Profile',
   data: function () {
@@ -14,6 +15,15 @@ export default {
       user: {},
     }
   },
+  computed: {
+    ...mapGetters([
+      'getUser',
+    ]),
+  },
+  created: function () {
+    this.user = this.getUser
+    console.log(this.user)
+  }
 }
 </script>
 

@@ -12,7 +12,6 @@
 
 <script>
 import MainPageItem from './MainPageItem.vue'
-import axios from 'axios'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -28,22 +27,11 @@ export default {
   computed: {
     ...mapGetters([
       'getToken',
+      'getMainActorList',
     ]),
   },
   created: function () {
-    const tokenObject = this.getToken
-    console.log(tokenObject)
-    axios({
-      method: 'GET',
-      url: `http://127.0.0.1:8000/movies/main/`,
-      headers: tokenObject
-    })
-      .then(res => {
-        this.itemList = res.data
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    this.itemList = this.getMainActorList
   }
 }
 </script>

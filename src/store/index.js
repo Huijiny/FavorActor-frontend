@@ -13,6 +13,7 @@ export default new Vuex.Store({
       favoriteActors: [],
       favoriteMovies: [],
     },
+    mainActorList: [],
   },
   mutations: {
     SET_USER_TOKEN: function (state, token) {
@@ -40,13 +41,9 @@ export default new Vuex.Store({
         return mov !== movie
       })
     },
-    SET_MAIN_ITEMS: function (state) {
-      // 여기서 받아올 데이터를 state에 main에 들어갈 애들로 정하고, getters에 해놓은다음 메인에 들어갈 때마다 같은 데이터가 뿌려지도록 함.
-      console.log(state)
-    }
   },
   actions: {
-    setUserToken: function ({ commit }, token) {
+    setUserToken: function ({ commit, dispatch }, token) {
       commit('SET_USER_TOKEN', token)
 
       axios({
@@ -62,12 +59,26 @@ export default new Vuex.Store({
           if (res.favorite_actors.length == 0) {
             router.push({ name: 'Select' })
           } else {
-            this.getMainItems() // 아니면 getMainItems를 하게됌.
+            dispatch('getMainItems')
           }
         })
         .catch(err => {
           console.log(err)
         })      
+    },
+    getMainItems: function () {
+      axios({
+        method: 'GET',
+        url: `http://127.0.0.1:8000/movies/main/`,
+        headers: { Authorization: `JWT ${this.state.usertoken}` }
+      })
+      .then(res => {
+        this.state.mainActorList = res.data
+        router.push({ name: 'Main'})
+      })
+      .catch(err => {
+        console.log(err)
+      })
     },
     setFavoriteActors: function ({ commit }, actor) {
       commit('SET_FAVOR_ACTORS', actor)
@@ -81,7 +92,7 @@ export default new Vuex.Store({
     removeFavoriteMovies: function ({ commit }, movie) {
       commit('REMOVE_FAVOR_MOVIES', movie)
     },
-    getMainItems: function ({ commit }) {
+    postUserTastes: function ({ dispatch }) {
       const config = {
         Authorization: `JWT ${this.state.usertoken}`,
       }
@@ -97,9 +108,8 @@ export default new Vuex.Store({
         headers: config,
       })
         .then(res => {
-          commit('SET_MAIN_ITEMS')
           console.log(res)
-          router.push({ name: 'Main'})
+          dispatch('getMainItems')
         })
         .catch(err => {
           console.log(err)
@@ -108,12 +118,15 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getToken: function (status) {
-      const token = { Authorization: `JWT ${status.usertoken}` }
+    getToken: function (state) {
+      const token = { Authorization: `JWT ${state.usertoken}` }
       return token
     },
-    getUser: function (status) {
-      return status.user
+    getUser: function (state) {
+      return state.user
+    },
+    getMainActorList: function (state) {
+      return state.mainActorList
     }
   },
   modules: {
