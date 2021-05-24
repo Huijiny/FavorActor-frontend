@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
-    <button>뒤로가기</button>
+    <button class="back-button" @click="routeToMain">
+      <img src="~@/assets/BackButton.png">
+    </button>
     <ActorDetail
       :actor="actor"
     />
@@ -32,6 +34,11 @@ export default {
       },
     }
   },
+  methods: {
+    routeToMain: function () {
+      this.$router.push({ name: 'Main' })
+    }
+  },
   computed: {
     ...mapGetters([
       'getToken',
@@ -56,5 +63,15 @@ export default {
 <style>
 .wrapper {
   margin: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.back-button {
+  border: none;
+  background: none;
+  margin-bottom: 35px;
 }
 </style>
