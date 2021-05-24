@@ -104,7 +104,7 @@ export default {
 
 }
 .auth-size {
-  width: 20%;
+  width: 300px;
 }
 p {
   color: #DBDBDB;

@@ -116,7 +116,8 @@ h2 {
 
 a {
   color: #DBDBDB;
-   text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
 }
 a:hover {
   color: grey;

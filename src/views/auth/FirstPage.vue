@@ -53,11 +53,9 @@ export default {
 .bgimg {
   /* Set rules to fill background */
   min-height: 100%;
-  min-width: 1024px;
     
   /* Set up proportionate scaling */
   width: 100%;
-  height: auto;
     
   /* Set up positioning */
   position: fixed;
@@ -65,7 +63,10 @@ export default {
   left: 0;
 
   background-image: url('~@/assets/Inception.png');
-  background-size: 100% 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-size: cover;
 
 }
 
