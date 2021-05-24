@@ -4,6 +4,8 @@
       <div class="guide-text">
         <h5><span class="username">{{ user.username }}</span>님이 좋아하실 만한 배우들을 찾아왔어요! </h5>
       </div>
+    <span class="next-btn" @click="routeToProfile">프로필</span>
+
     </div>
     <MainPage/>
 </div>
@@ -26,6 +28,9 @@ export default {
     }
   },
   methods: {
+    routeToProfile: function () {
+      this.$router.push({ name: 'Profile' })
+    }
   },
   computed: {
     ...mapGetters([
