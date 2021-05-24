@@ -43,7 +43,8 @@ export default {
       if (this.isActorPage == true) {
         this.isActorPage = false
       } else {
-        this.$store.dispatch('getMainItems')
+        console.log("asfd")
+        this.$store.dispatch('postUserTastes')
       }
       
     }

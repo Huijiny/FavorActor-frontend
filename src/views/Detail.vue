@@ -6,11 +6,15 @@
     <ActorDetail
       :actor="actor"
     />
+    <ActorDetailKnownFor
+      :actor-known-for="actor.actor.known_for"
+    />
   </div>
 </template>
 
 <script>
 import ActorDetail from '../components/ActorDetail.vue'
+import ActorDetailKnownFor from '../components/ActorDetailKnownFor.vue'
 import { mapGetters } from 'vuex'
 import axios from 'axios'
 
@@ -18,6 +22,7 @@ export default {
   name: 'Detail',
   components: {
     ActorDetail,
+    ActorDetailKnownFor,
   },
   data: function () {
     return {
