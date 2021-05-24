@@ -1,11 +1,13 @@
 <template>
-  <div class="d-flex"> 
-    <div class="center-cropped actor-img">
+  <div class="container"> 
+    <div class="actor-img">
       <img :src="getImage"/>
     </div>
     <div>
-      <p>출생: {{ this.actor.birth }}</p>
-      <p>배우가 출연한 영화의 평균 평점: {{ this.voteAverage }}</p>
+      <div class="text-box">
+        <p>출생: {{ this.actor.birth }}</p>
+        <p>배우가 출연한 영화의 평균 평점: {{ this.voteAverage }}</p>
+      </div>
       <KProgress :percent="votePercentage" :color="['#f5af19', '#f12711', '#9254de', '#40a9ff', '#5cdbd3']" :border="false"></KProgress>
     </div>
   </div>
@@ -52,12 +54,30 @@ export default {
 </script>
 
 <style scoped>
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
 .actor-img {
-  width: 100px;
+  width: 150px;
+  height: 200px;
+  margin-right: 20px;
+}
+.actor-img img {
+  width: 100%;
+  height: 100%;
 }
 #progress-bar {
   margin: 20px;
   width: 400px;
   height: 8px;
+}
+.text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
 }
 </style>
