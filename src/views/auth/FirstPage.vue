@@ -36,7 +36,7 @@ export default {
   font-family: 'Noto Sans KR', sans-serif;
 }
 .btn-size {
-  width: 50%;
+  width: 45%;
   border-radius: 30px;
   border: none;
 }
