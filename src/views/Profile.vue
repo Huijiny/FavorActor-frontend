@@ -1,22 +1,83 @@
 <template>
   <div>
-    <div>
-      {{ this.user.username }} 의 프로필  
+    <div class="p-5 m-5">
+      <h1><span class="username">{{ user.username }}</span></h1>
     </div>    
+    <div class="m-5">
+      <h3 class="title"><span class="username">좋아하는</span> 배우</h3>
+       <div class="row row-cols-1 row-cols-md-3  row-cols-lg-4 row-cols-xl-6 d-flex justify-content-center">
+        <ImageButtonItem 
+          v-for="(actor, idx) in favoriteActorList"
+          :key="idx"
+          :item="actor"
+        />
+      </div>
+    </div>
+    <div class="m-5">
+      <h3 class="title"><span class="username">좋아하는</span> 영화</h3>
+      <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 d-flex justify-content-center">
+        <SelectMoviesItem 
+          v-for="(movie, idx) in favoriteMovieList"
+          :key="idx"
+          :item="movie"
+        />
+    </div>
+    </div>
   </div>
 </template>
 
 <script>
+import ImageButtonItem from '../components/ImageButtonItem.vue'
+import SelectMoviesItem from '../components/SelectMoviesItem.vue'
+import { mapGetters } from 'vuex'
+import axios from 'axios'
+
 export default {
   name: 'Profile',
+  components: {
+    ImageButtonItem,
+    SelectMoviesItem,
+  },
   data: function () {
     return {
       user: {},
+      favoriteActorList: [],
+      favoriteMovieList: [],
     }
   },
+  computed: {
+    ...mapGetters([
+      'getUser',
+      'getToken'
+    ]),
+  },
+  created: function () {
+    this.user = this.getUser
+    axios({
+      url: 'http://127.0.0.1:8000/movies/favorites/',
+      method: 'GET',
+      headers: this.getToken
+    })
+      .then(res => {
+        console.log(res)
+        this.favoriteActorList = res.data.favorite_actors
+        this.favoriteMovieList = res.data.favorite_movies
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 }
 </script>
 
-<style>
-
+<style scoped>
+  .profile-header{
+    padding: 10px;
+  }
+  .title {
+    color: #FFFFFF;
+  }
+  .username {
+    color: #FF89B6;
+  }
 </style>
