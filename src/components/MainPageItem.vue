@@ -1,5 +1,5 @@
 <template>
-  <div class="item-wrapper col">
+  <div class="item-wrapper col" @click="routeToDetailPage">
     <div class="center-cropped">
       <img :src="getImage"/>
     </div>
@@ -19,11 +19,10 @@ export default {
       type: Object,
     }
   },
-  data: function () {
-    return {
-    }
-  },
   methods: {
+    routeToDetailPage: function () {
+      this.$router.push({ name: 'Detail', query: this.item.actor_id })
+    }
   },
   computed: {
     getImage: function () {
