@@ -6,6 +6,7 @@
         v-for="(movie, idx) in actorKnownFor"
         :key=idx
         :movie="movie"
+        @click.native="showMovieDetailModal"
       />
     </div>
   </div>
@@ -23,6 +24,11 @@ export default {
   },
   components: {
     ActorDetailKnownForItem,
+  },
+  methods: {
+    showMovieDetailModal: function () {
+      this.$emit('show-modal')
+    }
   }
 }
 </script>
@@ -35,7 +41,7 @@ export default {
 
 .knownfor-wrapper .knownfor-item:focus,
 .knownfor-wrapper .knownfor-item:hover {
-  transform: scale(1.3);
+  transform: scale(1.1);
   z-index: 1;
 }
 </style>

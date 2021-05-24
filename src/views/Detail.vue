@@ -3,11 +3,15 @@
     <button class="back-button" @click="routeToMain">
       <img src="~@/assets/BackButton.png">
     </button>
+    <MovieDatailModal v-if="isModalView" @close-modal="isModalView=false">
+      <MovieDetailContent/>
+    </MovieDatailModal>
     <ActorDetail
       :actor="actor"
     />
     <ActorDetailKnownFor
       :actor-known-for="actor.actor.known_for"
+      @show-modal="isModalView=true"
     />
   </div>
 </template>
@@ -15,6 +19,8 @@
 <script>
 import ActorDetail from '../components/ActorDetail.vue'
 import ActorDetailKnownFor from '../components/ActorDetailKnownFor.vue'
+import MovieDatailModal from '../components/MovieDetailModal.vue'
+import MovieDetailContent from '../components/MovieDetailContent.vue'
 import { mapGetters } from 'vuex'
 import axios from 'axios'
 
@@ -23,9 +29,12 @@ export default {
   components: {
     ActorDetail,
     ActorDetailKnownFor,
+    MovieDatailModal,
+    MovieDetailContent,
   },
   data: function () {
     return {
+      isModalView: false,
       actor: {
         actor: {
           actor_id: null,
