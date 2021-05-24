@@ -6,6 +6,7 @@ import Login from '../views/auth/Login.vue'
 import Main from '../views/Main.vue'
 import Select from '../views/Select.vue'
 import Profile from '../views/Profile.vue'
+import Detail from '../views/Detail.vue'
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,11 @@ const routes = [
     name: 'Profile',
     component: Profile,
   },
+  {
+    path: '/detail',
+    name: 'Detail',
+    component: Detail,
+  }
 ]
 
 const router = new VueRouter({
