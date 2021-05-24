@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="p-5 m-5">
+      <button class="back-button" @click="routeToMain">
+        <img src="~@/assets/BackButton.png">
+      </button>
       <h1><span class="username">{{ user.username }}</span></h1>
     </div>    
     <div class="m-5">
@@ -80,4 +83,9 @@ export default {
   .username {
     color: #FF89B6;
   }
+  .back-button {
+  border: none;
+  background: none;
+  margin-bottom: 35px;
+}
 </style>
