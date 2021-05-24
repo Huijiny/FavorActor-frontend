@@ -6,7 +6,7 @@
     <div>
       <p>출생: {{ this.actor.birth }}</p>
       <p>배우가 출연한 영화의 평균 평점: {{ this.voteAverage }}</p>
-      <KProgress :percent="60" :color="['#f5af19', '#f12711', '#9254de', '#40a9ff', '#5cdbd3']" :border="false"></KProgress>
+      <KProgress :percent="votePercentage" :color="['#f5af19', '#f12711', '#9254de', '#40a9ff', '#5cdbd3']" :border="false"></KProgress>
     </div>
   </div>
 </template>
@@ -26,6 +26,7 @@ export default {
   },
   computed: {
     getImage: function () {
+      console.log("computed get image")
       return `https://image.tmdb.org/t/p/w500${this.actor.actor.profile_path}`
     },
     voteAverage: function () {
@@ -38,10 +39,14 @@ export default {
       return (sumOfVote / length).toFixed(1)
     },
     votePercentage: function () {
-      return this.voteAverage * 100
+      return this.voteAverage * 10
     }
   },
   mounted: function () {
+    console.log('mounted')
+  },
+  created: function () {
+    console.log('created')
   }
 }
 </script>

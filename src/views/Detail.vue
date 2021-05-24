@@ -19,7 +19,17 @@ export default {
   },
   data: function () {
     return {
-      actor: '',
+      actor: {
+        actor: {
+          actor_id: null,
+          id: null,
+          known_for: [],
+          name: null,
+          popularity: null,
+          profile_path: null,
+        },
+        birth: null,
+      },
     }
   },
   computed: {
