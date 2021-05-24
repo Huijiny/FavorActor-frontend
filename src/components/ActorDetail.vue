@@ -1,14 +1,26 @@
 <template>
-  <div class="container"> 
+  <div class="container d-flex justify-content-center align-items-center m-5"> 
     <div class="actor-img">
       <img :src="getImage"/>
     </div>
     <div>
       <div class="text-box">
-        <p>출생: {{ this.actor.birth }}</p>
-        <p>배우가 출연한 영화의 평균 평점: {{ this.voteAverage }}</p>
+        <h1>{{ this.actor.actor.name }}</h1>
+        <br>
+        <h3>출생: {{ this.actor.birth }}</h3>
+        <br>
+        <h3>배우가 출연한 영화의 평균 평점: {{ this.voteAverage }}</h3>
       </div>
-      <KProgress :percent="votePercentage" :color="['#f5af19', '#f12711', '#9254de', '#40a9ff', '#5cdbd3']" :border="false"></KProgress>
+      <br>
+      <KProgress 
+        id="progress-design"
+        :percent="votePercentage" 
+        active 
+        :color="['#F54370', '#CC338B', '#9C20AA', '#7210C6', '#4A00E0']" 
+        bg-color="#434141" 
+        :show-text="false"
+        :line-height="12"
+      />
     </div>
   </div>
 </template>
@@ -54,16 +66,9 @@ export default {
 </script>
 
 <style scoped>
-.container{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
 .actor-img {
-  width: 150px;
-  height: 200px;
-  margin-right: 20px;
+  width: 300px;
+  margin-right: 50px;
 }
 .actor-img img {
   width: 100%;
@@ -79,5 +84,8 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   color: white;
+}
+#progress-design {
+  width: 150%
 }
 </style>
