@@ -7,6 +7,7 @@
     />
     <CommentList
       :comments="commentList"
+      @comment-deleted="getComments"
     />
   </div>
 </template>
