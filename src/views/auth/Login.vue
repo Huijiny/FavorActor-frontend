@@ -105,7 +105,7 @@ export default {
   background-size: cover;
 }
 .auth-size {
-  width: 20%;
+  width: 250px;
 }
 p {
   color: #DBDBDB;

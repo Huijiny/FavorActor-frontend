@@ -93,11 +93,11 @@ export default {
   border: none;
   background: none;
   margin-bottom: 35px;
-}
+  }
   @font-face {
      font-family: 'S-CoreDream-5Medium';
      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
      font-weight: normal;
      font-style: normal;
-}
+  }
 </style>
