@@ -48,6 +48,11 @@ export default {
       favoriteMovieList: [],
     }
   },
+  methods: {
+    routeToMain: function () {
+      this.$router.push({ name: 'Main' })
+    }
+  },
   computed: {
     ...mapGetters([
       'getUser',
@@ -79,6 +84,7 @@ export default {
   }
   .title {
     color: #FFFFFF;
+    font-family: "Noto Sans CJK KR";
   }
   .username {
     color: #FF89B6;
