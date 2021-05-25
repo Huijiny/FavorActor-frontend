@@ -14,7 +14,9 @@ export default {
   },
   computed: {
     getImage: function () {
-      return `https://image.tmdb.org/t/p/w300${this.movie.poster_path}`
+      return this.movie.poster_path ? 
+        `https://image.tmdb.org/t/p/w300${this.movie.poster_path}` : 
+        "http://koreamonitorusa.com/wp-content/uploads/2014/02/No-Poster-Img.jpg"
     }
   }
 }
