@@ -4,8 +4,7 @@
       <div class="guide-text">
         <h5><span class="username">{{ user.username }}</span>님이 좋아하실 만한 배우들을 찾아왔어요! </h5>
       </div>
-    <span class="next-btn" @click="routeToProfile">프로필</span>
-
+    <span class="next-btn btn-grad btn-size btn-text" @click="routeToProfile">프로필</span>
     </div>
     <MainPage/>
 </div>
@@ -51,7 +50,6 @@ export default {
     color: #FF89B6;
   }
   .navi {
-    position: sticky;
   }
   .css-q46ro5 {
     position: fixed;
@@ -71,10 +69,10 @@ export default {
   }
   .next-btn {
     display: inline-block;
-    font-size: 13px;
+    font-size: 16px;
     line-height: 32px;
-    height: 32px;
-    padding: 0 18px;
+    height: 50px;
+    padding: 5px 18px;
     text-align: center;
     border-radius: 40px;
     position: absolute;
@@ -89,4 +87,31 @@ export default {
     letter-spacing: -0.2px;
     cursor: pointer;
   }
+
+.btn-grad {background-image: linear-gradient(to left, #FC466B 0%, #4A00E0  50%, #FC466B  100%)}
+.btn-grad {
+  padding: 10px 5px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+}
+.btn-text {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.btn-size {
+  width: 10%;
+  border-radius: 30px;
+  border: none;
+}
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+.btn-grad:disabled {
+  /* background-image: linear-gradient(to left, #FC466B 0%, #4A00E0  50%, #FC466B  100%) */
+  background-color: black;
+}
 </style>

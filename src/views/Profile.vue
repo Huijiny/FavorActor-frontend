@@ -7,7 +7,7 @@
       <h1><span class="username">{{ user.username }}</span></h1>
     </div>    
     <div class="m-5">
-      <h3 class="title"><span class="username">좋아하는</span> 배우</h3>
+      <h3 class="title font-face"><span class="username">좋아하는</span> 배우</h3>
        <div class="row row-cols-1 row-cols-md-3  row-cols-lg-4 row-cols-xl-6 d-flex justify-content-center">
         <ImageButtonItem 
           v-for="(actor, idx) in favoriteActorList"
@@ -84,7 +84,7 @@ export default {
   }
   .title {
     color: #FFFFFF;
-    font-family: "Noto Sans CJK KR";
+    font-family: 'S-CoreDream-9Black';
   }
   .username {
     color: #FF89B6;
@@ -93,5 +93,11 @@ export default {
   border: none;
   background: none;
   margin-bottom: 35px;
+}
+  @font-face {
+     font-family: 'S-CoreDream-6Bold';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
 }
 </style>
