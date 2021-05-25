@@ -1,7 +1,24 @@
 <template>
   <div>
-    <div>
-      <p>{{ comment.user.username }} | {{ comment.rating }} | {{ comment.content }} <span><button v-if="comment.user.username == current_username" @click="deleteComment(comment.id)">X</button></span></p>
+    <div class="d-flex justify-content-between">
+      <div>
+         {{ comment.user.username }} | 
+        <span>
+          <star-rating 
+            :read-only="true"
+            :rating="comment.rating"
+            :star-size="10"
+            :inline="true"
+            :show-rating="false"
+          />
+        </span> 
+      </div>
+      <div>
+        <p align="left">{{ comment.content }}</p>
+      </div>
+      <div>
+        <button v-if="comment.user.username == current_username" @click="deleteComment(comment.id)">X</button>
+      </div>
     </div>
   </div>
 </template>
@@ -9,9 +26,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import axios from 'axios'
+import StarRating from 'vue-star-rating'
 
 export default {
   name: 'CommentListItem',
+  components: {
+    StarRating,
+  },
   props: {
     comment: {
       type: Object,

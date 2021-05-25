@@ -7,6 +7,7 @@
       @comment-added="getComments"
     />
     <CommentList
+      class="mt-5"
       :comments="commentList"
       @comment-deleted="getComments"
     />
