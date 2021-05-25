@@ -6,19 +6,31 @@
       <h5> {{ releaseDate + '  |  ' +  voteAverage }} </h5>
       <h4> {{ tagline }} </h4>
     </div>
-    
+    <div>
+      <Comments 
+        :movie_id="movieId"
+        :actor_id="actor_id"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Comments from './Comments.vue'
 
 export default {
   name: 'MovieDetailContent',
+  components: {
+    Comments,
+  },
   props: {
     movie: {
       type: Object,
     },
+    actor_id: {
+      type: Number,
+    }
   },
   data: function () {
     return {
@@ -71,6 +83,9 @@ export default {
     selectVideoSrc: function () {
       return `https://www.youtube.com/embed/${this.trailer.key}`
     },
+    movieId: function () {
+      return this.movie.movie_id
+    }
   }
 }
 </script>

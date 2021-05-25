@@ -6,6 +6,7 @@
     <MovieDatailModal v-if="isModalView" @close-modal="isModalView=false">
       <MovieDetailContent 
         :movie="modalMovie"
+        :actor_id="actor.actor.actor_id"
       />
     </MovieDatailModal>
     <ActorDetail
