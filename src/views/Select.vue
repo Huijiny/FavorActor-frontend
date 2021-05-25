@@ -8,8 +8,8 @@
           <span v-else>영화</span>
           를 선택해주세요.</h5>
       </div>
-      <span class="next-btn" @click="routeToMovieSelect">
-        <span v-if="isActorPage">건너뛰기</span>
+      <span class="next-btn btn-grad btn-size btn-text" @click="routeToMovieSelect">
+        <span v-if="isActorPage">영화로 고르기</span>
         <span v-else>완료하기</span>
         </span>
     </div>
@@ -78,7 +78,7 @@ export default {
     z-index: 400;
     background: linear-gradient( to top, rgba(18,18,18,0), rgba(18,18,18,1) 20% );
     text-align: center;
-    width: 100%;
+    width: 95%;
     height: 100px;
   }
   .wrapper {
@@ -88,9 +88,9 @@ export default {
   }
   .next-btn {
     display: inline-block;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 32px;
-    height: 32px;
+    height: 48px;
     padding: 0 18px;
     text-align: center;
     border-radius: 40px;
@@ -101,9 +101,35 @@ export default {
     color: #121218;
     font-weight: 700;
     -webkit-letter-spacing: -0.2px;
-    -moz-letter-spacing: -0.2px;
+    -moz-letter-spacing: -0.22px;
     -ms-letter-spacing: -0.2px;
-    letter-spacing: -0.2px;
+    letter-spacing: 0.5px;
     cursor: pointer;
+  }
+  .btn-grad {background-image: linear-gradient(to left, #FC466B 0%, #4A00E0  50%, #FC466B  100%)}
+  .btn-grad {
+    padding: 10px 5px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+  }
+  .btn-text {
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .btn-size {
+    width: 10%;
+    border-radius: 30px;
+    border: none;
+  }
+  .btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+  .btn-grad:disabled {
+    /* background-image: linear-gradient(to left, #FC466B 0%, #4A00E0  50%, #FC466B  100%) */
+    background-color: black;
   }
 </style>
