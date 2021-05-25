@@ -4,7 +4,9 @@
       <img src="~@/assets/BackButton.png">
     </button>
     <MovieDatailModal v-if="isModalView" @close-modal="isModalView=false">
-      <MovieDetailContent/>
+      <MovieDetailContent 
+        :movie="modalMovie"
+      />
     </MovieDatailModal>
     <ActorDetail
       :actor="actor"
@@ -12,6 +14,7 @@
     <ActorDetailKnownFor
       :actor-known-for="actor.actor.known_for"
       @show-modal="isModalView=true"
+      @modal-movie-data="movie => modalMovie=movie"
     />
   </div>
 </template>
@@ -35,6 +38,7 @@ export default {
   data: function () {
     return {
       isModalView: false,
+      modalMovie: null,
       actor: {
         actor: {
           actor_id: null,
