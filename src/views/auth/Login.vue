@@ -100,7 +100,7 @@ export default {
   /* Set up positioning */
   position: fixed;
 
-  background-image: url('~@/assets/Joker.png');
+  background-image: url('~@/assets/Starwars.jpg');
   background-position: center;
   background-size: cover;
 }

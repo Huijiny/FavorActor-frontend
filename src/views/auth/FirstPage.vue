@@ -61,7 +61,7 @@ export default {
   top: 0;
   left: 0;
 
-  background-image: url('~@/assets/Inception.png');
+  background-image: url('~@/assets/Inception.jpg');
 
   /* Center and scale the image nicely */
   background-position: center;
