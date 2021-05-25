@@ -3,7 +3,7 @@
     <button class="back-button" @click="routeToMain">
       <img src="~@/assets/BackButton.png">
     </button>
-    <MovieDatailModal v-if="isModalView" @close-modal="isModalView=false">
+    <MovieDatailModal :class="{ 'modal-opened': isModalView }" v-if="isModalView" @close-modal="isModalView=false">
       <MovieDetailContent 
         :movie="modalMovie"
         :actor_id="actor.actor.actor_id"
@@ -80,6 +80,10 @@ export default {
 </script>
 
 <style>
+body.modal-opened {
+  overflow: hidden;
+   position: fixed;
+}
 .wrapper {
   margin: 40px;
   display: flex;

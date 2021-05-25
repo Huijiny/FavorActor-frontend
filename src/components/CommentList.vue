@@ -1,50 +1,70 @@
 <template>
-  <div class="comment-list">
-    <div v-for="(comment, idx) in comments" :key="idx">
-      <div>
-        <p>{{ comment.user.username }} | {{ comment.rating }} | {{ comment.content }} <span><button v-if="comment.user.username == current_username" @click="deleteComment(comment.id)">X</button></span></p>
-      </div>
+  <div>
+    <comment-list-item
+      v-for="(comment, idx) in initialComments" 
+      :key="idx"
+      :comment="comment"
+    />
+    <div v-if="isOpened">
+      <comment-list-item
+      v-for="(comment, idx) in restComments" 
+      :key="idx"
+      :comment="comment"
+    />
     </div>
+    <button @click="checkOpened">댓글 모두 보기</button>
+    
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import axios from 'axios'
-
+import CommentListItem from './CommentListItem.vue'
 export default {
   name: 'CommentList',
+  components: {
+    CommentListItem,
+  },
   props: {
     comments: {
       type: Array,
     },
   },
-  computed: {
-    ...mapGetters([
-      'getUser',
-      'getToken',
-    ]),
-    current_username: function () {
-      return this.getUser.username
+  data: function () {
+    return {
+      isOpened: false,
+      initialComments: [],
+      restComments: [],
     }
   },
   methods: {
-    deleteComment: function (comment_pk) {
-      axios({
-        url: `http://127.0.0.1:8000/community/comment/${comment_pk}/delete/`,
-        method: 'POST',
-        headers: this.getToken
-      })
-        .then( res => {
-          console.log(res)
-          this.$emit('comment-deleted')
-        })
-        .catch(err => {
-          console.log(err)
-        })
+    checkOpened: function () {
+      this.isOpened = !this.isOpened
+    },
+    sliceShowPart: function () {
+      if (this.comments.length < 5) {
+        this.initialComments = this.comments.slice(0)
+      } else {
+        this.initialComments = this.comments.slice(0, 5)
+      }
+    },
+    sliceRestPart: function () {
+      if (this.comments.length > 5) {
+        this.restComments = this.comments.slice(5)
+      } else {
+        this.restComments = []
+      }
     }
+  },
+  watch: {
+    comments:{
+      handler: function () { 
+        this.sliceShowPart()
+        this.sliceRestPart()
+      },
+      deep: true
+    }
+    
   }
-     
 }
 </script>
 

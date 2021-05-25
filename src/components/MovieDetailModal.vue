@@ -11,9 +11,6 @@
 <script>
 export default {
   name: 'MovieDetailModal',
-  created: function () {
-    console.log("createdModal")
-  }
 }
 </script>
 

@@ -1,16 +1,15 @@
 <template>
   <div class="comment-form"> 
-    <p>댓글 쓰기</p>
-    <span>
+    <div class="rating-input d-flex">
       <star-rating 
-        :star-size="30"
+        :star-size="25"
         star-rating :increment="0.5"
         :inline="true"
         :show-rating="false"
         v-model="rating"
       />
-      <input @keyup.enter="postComment" type="text" v-model="comment">
-    </span>
+    <input @keyup.enter="postComment" type="text" v-model="comment">
+    </div>
   </div>
 </template>
 
@@ -72,9 +71,12 @@ export default {
 
 <style>
 
+.rating-input {
+  width: 100%;
+}
 .comment-form input {
   background-color: #c4c4c4c9;
-  width: 80%;
+  width: 100%;
   border-radius: 8px;
 }
 </style>
