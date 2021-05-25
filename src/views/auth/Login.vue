@@ -9,7 +9,7 @@
         <input v-model="credentials.username" type="text" class="form-control block" placeholder="이름(2자 이상)">
       </div>
       <div class="input-group">
-        <input v-model="credentials.password" type="password" class="form-control" placeholder="비밀번호">
+        <input v-model="credentials.password" @keyup.enter="login" type="password" class="form-control" placeholder="비밀번호">
       </div>
       <button @click="login" class="btn-grad btn-size btn-text m-3" :disabled="isDisabled">Login</button>
     </div>

@@ -11,7 +11,7 @@
         <input v-model="credentials.password" type="password" class="form-control" placeholder="영문, 숫자, 특문 중 2개 조합 10자 이상">
       </div>
       <div class="input-group">
-        <input v-model="credentials.passwordConfirmation" type="password" class="form-control" placeholder="위 비밀번호를 그대로 쳐주세요.">
+        <input v-model="credentials.passwordConfirmation" @keyup.enter="signup" type="password" class="form-control" placeholder="위 비밀번호를 그대로 쳐주세요.">
       </div>
       <button @click="signup" class="btn-grad btn-size btn-text m-3" :disabled="isDisabled">회원가입</button>
       <p >저희 서비스는 무료입니다. <br> 회원가입도 간단하죠.</p>
