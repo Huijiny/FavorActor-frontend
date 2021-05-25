@@ -33,12 +33,12 @@ export default {
 } 
 .modal-card { 
   position: relative; 
-  max-width: 80%; 
+  max-width: 70%; 
   margin: auto; 
-  margin-top: 200px; 
+  margin-top: 50px; 
   padding: 20px; 
-  background-color: white; 
-  min-height: 500px; 
+  background-color: #171717; 
+  min-height: 900px; 
   z-index: 5; 
   opacity: 1; 
 }

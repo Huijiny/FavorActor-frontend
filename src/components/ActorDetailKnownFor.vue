@@ -6,7 +6,7 @@
         v-for="(movie, idx) in actorKnownFor"
         :key=idx
         :movie="movie"
-        @click.native="showMovieDetailModal"
+        @click.native="showMovieDetailModal(movie)"
       />
     </div>
   </div>
@@ -26,8 +26,9 @@ export default {
     ActorDetailKnownForItem,
   },
   methods: {
-    showMovieDetailModal: function () {
+    showMovieDetailModal: function (movie) {
       this.$emit('show-modal')
+      this.$emit('modal-movie-data', movie)
     }
   }
 }

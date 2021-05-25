@@ -32,7 +32,6 @@ export default {
   },
   created: function () {
     const tokenObject = this.getToken
-    console.log(tokenObject)
     axios({
       method: 'GET',
       url: `http://127.0.0.1:8000/movies/new-actors/`,
