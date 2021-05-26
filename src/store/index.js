@@ -12,6 +12,7 @@ export default new Vuex.Store({
       username: '',
       favoriteActors: [],
       favoriteMovies: [],
+      is_staff: false,
     },
     mainActorList: [],
   },
@@ -23,6 +24,7 @@ export default new Vuex.Store({
       state.user.username = userdata.username
       state.user.favoriteActors = userdata.favorite_actors
       state.user.favoriteMovies = userdata.favorite_movies
+      state.user.is_staff = userdata.is_staff
     },
     SET_FAVOR_ACTORS: function (state, actor) {
       state.user.favoriteActors.push(actor)
