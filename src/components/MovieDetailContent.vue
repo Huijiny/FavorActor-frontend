@@ -1,13 +1,14 @@
 <template>
   <div>
     <iframe :src="this.selectVideoSrc" frameborder="0" gesture=media allow="accelerometer;"></iframe>
-    <div class="movie-detail m-3 d-flex-col justify-content-start align-items-start">
-      <h1>{{ movie.title }}</h1> 
-      <h5> {{ releaseDate + '  |  ' +  voteAverage }} </h5>
-      <h4> {{ tagline }} </h4>
+    <div class="movie-detail m-3">
+      <h2 align="left">{{ movie.title }}</h2> 
+      <h5 align="left"> {{ releaseDate + '  |  ' +  voteAverage }} </h5>
+      <h5 align="left"> {{ tagline }} </h5>
     </div>
     <div>
       <Comments 
+        class="mt-5 d-flex-col justify-content-start "
         :movie_id="movieId"
         :actor_id="actor_id"
       />
@@ -97,5 +98,8 @@ iframe {
 }
 .movie-detail {
   color: #FFFFFF;
+}
+.movie-detail > h2 {
+  font-weight: 900;
 }
 </style>

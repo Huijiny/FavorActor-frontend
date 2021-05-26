@@ -1,14 +1,17 @@
 <template>
-  <div class="comments">
+  <div class="comments mx-3">
+    <p align="left">이 배우의 이 영화는 어땠나요? 기록을 남겨보세요!</p>
     <CommentForm
       :movie_id="movieId"
       :actor_id="actor_id"
       @comment-added="getComments"
     />
     <CommentList
+      class="mt-5"
       :comments="commentList"
       @comment-deleted="getComments"
     />
+   
   </div>
 </template>
 

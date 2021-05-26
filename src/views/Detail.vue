@@ -1,9 +1,9 @@
 <template>
-  <div class="wrapper">
-    <button class="back-button" @click="routeToMain">
+  <div class="wrapper-detail" :class="{'scroll-fixed': isModalView }">
+    <button class="button-icon" @click="routeToMain">
       <img src="~@/assets/BackButton.png">
     </button>
-    <MovieDatailModal v-if="isModalView" @close-modal="isModalView=false">
+    <MovieDatailModal :class="{ 'modal-opened': isModalView }" v-if="isModalView" @close-modal="isModalView=false">
       <MovieDetailContent 
         :movie="modalMovie"
         :actor_id="actor.actor.actor_id"
@@ -80,15 +80,18 @@ export default {
 </script>
 
 <style>
-.wrapper {
+.wrapper-detail {
   margin: 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
+.scroll-fixed {
+  position: fixed;
+}
 
-.back-button {
+.button-icon {
   border: none;
   background: none;
   margin-bottom: 35px;
