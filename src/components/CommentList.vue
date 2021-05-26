@@ -4,15 +4,17 @@
       v-for="(comment, idx) in initialComments" 
       :key="idx"
       :comment="comment"
+      @comment-deleted="emitDelete"
     />
     <div v-if="isOpened">
       <comment-list-item
       v-for="(comment, idx) in restComments" 
       :key="idx"
       :comment="comment"
+      @comment-deleted="emitDelete"
     />
     </div>
-    <button @click="checkOpened" class="button-icon">
+    <button @click="checkOpened" class="button-icon-nomargin mt-3">
       <img src="~@/assets/down.png">
     </button>
     
@@ -55,6 +57,9 @@ export default {
       } else {
         this.restComments = []
       }
+    },
+    emitDelete: function () {
+      this.$emit('comment-deleted')
     }
   },
   watch: {
@@ -71,5 +76,9 @@ export default {
 </script>
 
 <style>
+.button-icon-nomargin {
+    border: none;
+    background: none;
+}
 
 </style>

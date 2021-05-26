@@ -23,6 +23,8 @@ export default {
   left: 0; 
   top: 0; 
   z-index: 5; 
+  overflow: scroll;
+
 } 
 .overlay { 
   opacity: 0.5; 

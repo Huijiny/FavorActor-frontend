@@ -80,16 +80,13 @@ export default {
 </script>
 
 <style>
-body.modal-opened {
-  overflow: hidden;
-   position: fixed;
-}
 .wrapper {
   margin: 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  position: fixed;
 }
 
 .button-icon {

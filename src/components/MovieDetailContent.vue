@@ -8,7 +8,7 @@
     </div>
     <div>
       <Comments 
-        class="my-5 d-flex-col justify-content-start "
+        class="mt-5 d-flex-col justify-content-start "
         :movie_id="movieId"
         :actor_id="actor_id"
       />
