@@ -4,9 +4,14 @@
       <img :src="posterPath"/>
     </div>
     <div :class="{ 'item-selected ': liked, 'overlay': !liked }">
+      <button class="button-icon-nomargin btn-position" v-if="isProfile"> 
+        <img src="~@/assets/close.png">
+      </button>
       <div class="text">
         <h4>{{ item.title }}</h4>
-        <button class="btn mt-2" @click="likeButton"><i class="fa-heart like-button" :class="{ 'fas': liked, 'far': !liked }"></i></button>
+        <button  v-if="isProfile==false" class="btn mt-2" @click="likeButton">
+          <i class="fa-heart like-button" :class="{ 'fas': liked, 'far': !liked }"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -18,7 +23,10 @@ export default {
   props: {
     item: {
       type: Object,
-    }
+    },
+    isProfile: {
+      type: Boolean,
+    },
   },
   data: function () {
     return {
@@ -112,5 +120,13 @@ text-align: center;
 
 h5 {
   margin: 0px;
+}
+
+.btn-position {
+  margin: 3px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 4;
 }
 </style>

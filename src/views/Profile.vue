@@ -20,6 +20,7 @@
           :key="idx"
           :item="actor"
           class="width-set"
+          :is-profile="true"
         />
       </div>
       
@@ -33,6 +34,7 @@
           :key="idx"
           :item="movie"
           class="width-set"
+          :is-profile="true"
         />
       </div>
     </div>
