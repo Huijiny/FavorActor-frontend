@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     routeToProfile: function () {
-      this.$router.push({ name: 'Profile' })
+      this.$router.push({ name: 'Profile', query: this.user.username })
     }
   },
   computed: {

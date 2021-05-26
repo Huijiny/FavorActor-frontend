@@ -66,7 +66,7 @@ export default {
   created: function () {
     this.user = this.getUser
     axios({
-      url: `http://127.0.0.1:8000/accounts/${this.user.username}/`,
+      url: `http://127.0.0.1:8000/accounts/${this.$route.query}/`,
       method: 'GET',
       headers: this.getToken
     })

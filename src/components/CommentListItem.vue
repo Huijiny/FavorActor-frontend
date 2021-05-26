@@ -2,7 +2,7 @@
   <div>
     <div class="d-flex justify-content-between">
       <div>
-         {{ comment.user.username }} | 
+         <span class="username" @click="routeToProfile">{{ comment.user.username }}</span> | 
         <span>
           <star-rating 
             :read-only="true"
@@ -63,12 +63,18 @@ export default {
         .catch(err => {
           console.log(err)
         })
+    },
+    routeToProfile: function () {
+      console.log(this.comment.username)
+       this.$router.push({ name: 'Profile', query: this.comment.user.username })
     }
   }
      
 }
 </script>
 
-<style>
-
+<style scoped>
+.username {
+  cursor: pointer;
+}
 </style>
