@@ -66,12 +66,12 @@ export default {
   created: function () {
     this.user = this.getUser
     axios({
-      url: 'http://127.0.0.1:8000/movies/favorites/',
+      url: `http://127.0.0.1:8000/accounts/${this.user.username}/`,
       method: 'GET',
       headers: this.getToken
     })
       .then(res => {
-        console.log(res)
+        this.user = res.data.user
         this.favoriteActorList = res.data.favorite_actors
         this.favoriteMovieList = res.data.favorite_movies
       })
