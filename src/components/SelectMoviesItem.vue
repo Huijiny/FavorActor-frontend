@@ -4,7 +4,7 @@
       <img :src="posterPath"/>
     </div>
     <div :class="{ 'item-selected ': liked, 'overlay': !liked }">
-      <button class="button-icon-nomargin btn-position" v-if="isProfile"> 
+      <button class="button-icon-nomargin btn-position" v-if="isMyProfile"> 
         <img src="~@/assets/close.png">
       </button>
       <div class="text">
@@ -25,6 +25,9 @@ export default {
       type: Object,
     },
     isProfile: {
+      type: Boolean,
+    },
+    isMyProfile: {
       type: Boolean,
     },
   },

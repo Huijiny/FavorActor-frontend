@@ -21,6 +21,7 @@
           :item="actor"
           class="width-set"
           :is-profile="true"
+          :is-my-profile="isMe"
         />
       </div>
       
@@ -35,6 +36,7 @@
           :item="movie"
           class="width-set"
           :is-profile="true"
+          :is-my-profile="isMe"
         />
       </div>
     </div>
@@ -85,6 +87,9 @@ export default {
       'getUser',
       'getToken'
     ]),
+    isMe: function () {
+      return this.getUser.username == this.user.username
+    }
   },
   created: function () {
     this.user = this.getUser
