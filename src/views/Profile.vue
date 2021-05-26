@@ -6,7 +6,7 @@
     <div class=" my-5">
       <h1><span class="username ms-3">{{ user.username }}</span>님의 프로필</h1>
       <div v-if="this.getUser.username != this.user.username">
-        <button @click="followButtonClick">
+        <button @click="followButtonClick" class="btn-grad btn-size btn-text">
           <span v-if="isFollowed">Unfollow</span>
           <span v-else>Follow</span>
       </button>
@@ -142,5 +142,28 @@ h1 {
 .width-set {
   min-width: 200px;
   max-width: 200px;
+}
+.btn-grad {background-image: linear-gradient(to left, #FC466B 0%, #4A00E0  50%, #FC466B  100%)}
+.btn-grad {
+  margin: 10px;
+  padding: 10px 45px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+}
+.btn-text {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.btn-size {
+  width: 70%;
+  border-radius: 30px;
+  border: none;
+}
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 </style>
