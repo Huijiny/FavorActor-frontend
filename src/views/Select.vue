@@ -62,9 +62,11 @@ export default {
 
 <style scoped>
   h5 {
+    font-weight: 700;
     color: #FFFFFF;
   }
   .username {
+    font-weight: 700;
     color: #FF89B6;
   }
   .navi {
@@ -88,15 +90,14 @@ export default {
   }
   .next-btn {
     display: inline-block;
-    font-size: 15px;
-    line-height: 32px;
-    height: 48px;
-    padding: 0 18px;
+    font-size: 13px;
+    height: 40px;
+    padding: 0 15px;
     text-align: center;
     border-radius: 40px;
     position: absolute;
-    top: 40px;
-    right: 6%;
+    top: 35px;
+    right: 3%;
     background-color: #FFFFFF;
     color: #121218;
     font-weight: 700;
@@ -111,21 +112,19 @@ export default {
     padding: 10px 5px;
     transition: 0.5s;
     background-size: 200% auto;
+    font-weight: 700;
     color: white;            
   }
   .btn-text {
-    text-transform: uppercase;
-    text-align: center;
     font-family: 'Noto Sans KR', sans-serif;
   }
   .btn-size {
-    width: 10%;
-    border-radius: 30px;
-    border: none;
+    width: 130px;
   }
   .btn-grad:hover {
     background-position: right center; /* change the direction of the change here */
     color: #fff;
+    font-weight: 700;
     text-decoration: none;
   }
   .btn-grad:disabled {

@@ -5,11 +5,11 @@
     </div>
     <div>
       <div class="text-box">
-        <h1>{{ this.actor.actor.name }}</h1>
+        <h1 class="actor-name">{{ this.actor.actor.name }}</h1>
         <br>
-        <h3>출생: {{ this.actor.birth }}</h3>
+        <h4 class="actor-detail">출생: <span>{{ this.actor.birth }}</span></h4>
         <br>
-        <h3>배우가 출연한 영화의 평균 평점: {{ this.voteAverage }}</h3>
+        <h4 class="actor-detail">배우가 출연한 영화의 평균 평점: <span>{{this.voteAverage}}</span></h4>
       </div>
       <br>
       <KProgress 
@@ -87,5 +87,11 @@ export default {
 }
 #progress-design {
   width: 150%
+}
+.actor-name {
+  font-weight: 800;
+}
+.actor-detail {
+  font-weight: 600;
 }
 </style>

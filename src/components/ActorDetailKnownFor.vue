@@ -46,6 +46,7 @@ export default {
   z-index: 1;
 }
 .actor-detail-title {
+  font-weight: 700;
   color: #FFFFFF;
 }
 </style>
