@@ -1,10 +1,10 @@
 <template>
-  <div class="item-wrapper col" @click="routeToDetailPage">
+  <div class="item-wrapper col"  @click="routeToDetailPage">
     <div class="center-cropped">
-      <img :src="getImage"/>
+      <img :src="getImage" />
     </div>
     <div :class="{ 'item-selected ': liked, 'overlay': !liked }">
-      <button class="button-icon-nomargin btn-position" v-if="isMyProfile"> 
+      <button class="button-icon-nomargin btn-position" v-if="isMyProfile" @click="deleteActor"> 
         <img src="~@/assets/close.png">
       </button>
       <div class="text">
@@ -51,6 +51,10 @@ export default {
         this.$router.push({ name: 'Detail', query: this.item.actor_id })
       }
     },
+    deleteActor: function (event) {
+      event.stopPropagation() 
+      this.$emit('delete-actor', this.item.actor_id)
+    }
   },
   computed: {
     getImage: function () {
@@ -134,5 +138,6 @@ h5 {
   top: 0;
   right: 0;
   z-index: 4;
+  width: 30px;
 }
 </style>
