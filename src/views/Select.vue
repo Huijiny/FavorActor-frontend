@@ -6,9 +6,9 @@
         <h5>좋아하는 
           <span v-if="isActorPage">배우</span>
           <span v-else>영화</span>
-          를 선택해주세요.</h5>
+          를 3개 이상 선택해주세요.</h5>
       </div>
-      <span class="next-btn btn-grad btn-size btn-text" @click="routeToMovieSelect">
+      <span class="next-btn btn-grad btn-size btn-text" @click="routeToMovieSelect" :disabled="isDisabled">
         <span v-if="isActorPage">영화로 고르기</span>
         <span v-else>완료하기</span>
       </span>
@@ -43,7 +43,6 @@ export default {
       if (this.isActorPage == true) {
         this.isActorPage = false
       } else {
-        console.log("asfd")
         this.$store.dispatch('postUserTastes')
       }
       
@@ -53,6 +52,15 @@ export default {
     ...mapGetters([
       'getUser',
     ]),
+    isDisabled: function () {
+      if (this.isActorPage && this.user.favoriteActors.length < 3) {
+        return true
+      } else if (!this.isActorPage && this.user.favoriteMovies.length < 3) {
+        return true
+      } else {
+        return false
+      }
+    },
   },
   created: function () {
     this.user = this.getUser
@@ -131,4 +139,5 @@ export default {
     /* background-image: linear-gradient(to left, #FC466B 0%, #4A00E0  50%, #FC466B  100%) */
     background-color: black;
   }
+  span[disabled] { pointer-events: none;  opacity: 0.5;}
 </style>

@@ -13,7 +13,7 @@
       :actor="actor"
     />
     <ActorDetailKnownFor
-      :actor-known-for="actor.actor.known_for"
+      :actor-known-for="actorKnownFor"
       @show-modal="isModalView=true"
       @modal-movie-data="movie => modalMovie=movie"
     />
@@ -62,6 +62,9 @@ export default {
     ...mapGetters([
       'getToken',
     ]),
+    actorKnownFor: function () {
+      return this.actor.actor.known_for.slice().sort((a,b) =>  b.vote_average - a.vote_average);
+    },
   },
   created: function () {
     axios({

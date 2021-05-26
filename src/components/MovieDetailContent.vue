@@ -67,7 +67,7 @@ export default {
         console.log(res)
       })
       axios({
-        url: `https://api.themoviedb.org/3/movie/${this.movie.movie_id}?api_key=${api_key}&language=en-US`,
+        url: `https://api.themoviedb.org/3/movie/${this.movie.movie_id}?api_key=${api_key}&language=ko-KR`,
         method: 'GET',
       })
         .then(res => {

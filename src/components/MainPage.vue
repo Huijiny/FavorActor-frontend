@@ -46,8 +46,6 @@ export default {
 
   .wrapper {
     margin-top: 100px;
-    margin-right: 30px;
-    margin-left: 30px;
     cursor: pointer;
   }
   .next-btn {
