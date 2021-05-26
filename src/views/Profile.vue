@@ -5,6 +5,12 @@
       </button>
     <div class=" my-5">
       <h1><span class="username ms-3">{{ user.username }}</span>님의 프로필</h1>
+      <div v-if="this.getUser.username != this.user.username">
+        <button @click="followButtonClick" class="btn-grad btn-size btn-text">
+          <span v-if="isFollowed">Unfollow</span>
+          <span v-else>Follow</span>
+      </button>
+      </div>
     </div>    
     <div class="my-5">
       <h3 align="left" class="title ms-3"><span class="username">좋아하는</span> 배우</h3>
@@ -50,11 +56,26 @@ export default {
       user: {},
       favoriteActorList: [],
       favoriteMovieList: [],
+      isFollowed: false,
     }
   },
   methods: {
     routeToMain: function () {
       this.$router.push({ name: 'Main' })
+    },
+    followButtonClick: function () {
+      this.isFollowed = !this.isFollowed
+      axios({
+        url: `http://127.0.0.1:8000/accounts/${this.user.id}/follow/`,
+        method: 'POST',
+        headers: this.getToken
+      })
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
   computed: {
@@ -74,6 +95,7 @@ export default {
         this.user = res.data.user
         this.favoriteActorList = res.data.favorite_actors
         this.favoriteMovieList = res.data.favorite_movies
+        this.isFollowed = this.getUser.followings.includes(this.user.id)
       })
       .catch(err => {
         console.log(err)
@@ -120,5 +142,28 @@ h1 {
 .width-set {
   min-width: 200px;
   max-width: 200px;
+}
+.btn-grad {background-image: linear-gradient(to left, #FC466B 0%, #4A00E0  50%, #FC466B  100%)}
+.btn-grad {
+  margin: 10px;
+  padding: 10px 45px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+}
+.btn-text {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.btn-size {
+  width: 70%;
+  border-radius: 30px;
+  border: none;
+}
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 </style>
