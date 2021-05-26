@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper-detail">
+  <div class="wrapper-detail" :class="{'scroll-fixed': isModalView }">
     <button class="button-icon" @click="routeToMain">
       <img src="~@/assets/BackButton.png">
     </button>
@@ -86,6 +86,8 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+}
+.scroll-fixed {
   position: fixed;
 }
 
