@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="p-5 m-5">
-      <button class="back-button" @click="routeToMain">
+      <button class="button-icon" @click="routeToMain">
         <img src="~@/assets/BackButton.png">
       </button>
       <h1><span class="username">{{ user.username }}</span></h1>
@@ -79,20 +79,21 @@ export default {
 </script>
 
 <style scoped>
-  .profile-header{
-    padding: 10px;
-  }
-  .title {
-    color: #FFFFFF;
-    font-family: 'S-CoreDream-9Black';
-  }
-  .username {
-    color: #FF89B6;
-  }
-  .back-button {
+.profile-header{
+  padding: 10px;
+}
+.title {
+  color: #FFFFFF;
+  font-family: 'S-CoreDream-9Black';
+}
+.username {
+  color: #FF89B6;
+}
+.button-icon {
   border: none;
   background: none;
   margin-bottom: 35px;
+<<<<<<< HEAD
   }
   @font-face {
      font-family: 'S-CoreDream-5Medium';
@@ -100,4 +101,13 @@ export default {
      font-weight: normal;
      font-style: normal;
   }
+=======
+}
+@font-face {
+  font-family: 'S-CoreDream-5Medium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+>>>>>>> cd1d58a (Add close and down button)
 </style>

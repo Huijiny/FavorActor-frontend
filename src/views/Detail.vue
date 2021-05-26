@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <button class="back-button" @click="routeToMain">
+    <button class="button-icon" @click="routeToMain">
       <img src="~@/assets/BackButton.png">
     </button>
     <MovieDatailModal :class="{ 'modal-opened': isModalView }" v-if="isModalView" @close-modal="isModalView=false">
@@ -92,7 +92,7 @@ body.modal-opened {
   align-items: flex-start;
 }
 
-.back-button {
+.button-icon {
   border: none;
   background: none;
   margin-bottom: 35px;

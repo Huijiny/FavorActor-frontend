@@ -17,7 +17,9 @@
         <p align="left">{{ comment.content }}</p>
       </div>
       <div>
-        <button v-if="comment.user.username == current_username" @click="deleteComment(comment.id)">X</button>
+        <button class="button-icon" v-if="comment.user.username == current_username" @click="deleteComment(comment.id)">
+           <img src="~@/assets/close.png">
+        </button>
       </div>
     </div>
   </div>

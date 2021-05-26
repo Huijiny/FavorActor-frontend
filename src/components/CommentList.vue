@@ -12,7 +12,9 @@
       :comment="comment"
     />
     </div>
-    <button @click="checkOpened">댓글 모두 보기</button>
+    <button @click="checkOpened" class="button-icon">
+      <img src="~@/assets/down.png">
+    </button>
     
   </div>
 </template>
