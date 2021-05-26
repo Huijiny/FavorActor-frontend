@@ -4,11 +4,15 @@
       <div class="guide-text mt-5 pt-4">
         <h2><span class="username">{{ user.username }}</span>님이 좋아하실 만한 배우들을 찾아왔어요! </h2>
       </div>
-    
-      <span class="next-btn btn-grad btn-size btn-text" @click="routeToProfile">
-       <img src="~@/assets/profile.jpg" height="100px">
-      </span>
-
+      <div class="next-btn">
+        <span class="nav-btn m-1" @click="routeToProfile">
+          profile
+        </span>
+        <span class="nav-btn m-1" @click="logout">
+          logout
+        </span>
+      </div>
+     
     </div>
     <MainPage/>
 </div>
@@ -33,6 +37,10 @@ export default {
   methods: {
     routeToProfile: function () {
       this.$router.push({ name: 'Profile', query: this.user.username })
+    },
+    logout: function () {
+      localStorage.removeItem('jwt')
+      this.$router.push({ name: 'Login' })
     }
   },
   computed: {
@@ -75,7 +83,7 @@ h2 {
   display: inline-block;
   padding: 0 18px;
   position: absolute;
-  top: 50px;
+  top: 20px;
   right: 0%;
   -webkit-letter-spacing: -0.2px;
   -moz-letter-spacing: -0.22px;
@@ -83,4 +91,14 @@ h2 {
   letter-spacing: 0.5px;
   cursor: pointer;
 }
+
+.nav-btn {
+  color: white;
+  font-weight: 600;
+
+}
+.nav-btn:hover {
+  color: #FF89B6;
+}
+
 </style>
