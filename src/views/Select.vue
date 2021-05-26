@@ -11,7 +11,7 @@
       <span class="next-btn btn-grad btn-size btn-text" @click="routeToMovieSelect">
         <span v-if="isActorPage">영화로 고르기</span>
         <span v-else>완료하기</span>
-        </span>
+      </span>
     </div>
 
   <SelectActors v-if="isActorPage"/>

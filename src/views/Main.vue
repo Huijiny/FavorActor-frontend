@@ -1,12 +1,14 @@
 <template>
 <div class="wrapper">
-    <div class="navi css-q46ro5 pt-4 pb-5">
-      <div class="guide-text">
-        <h5><span class="username">{{ user.username }}</span>님이 좋아하실 만한 배우들을 찾아왔어요! </h5>
+    <div class="css-q46ro5">
+      <div class="guide-text mt-5 pt-4">
+        <h2><span class="username">{{ user.username }}</span>님이 좋아하실 만한 배우들을 찾아왔어요! </h2>
       </div>
-    <button class="profile-button" @click="routeToProfile">
-      <img src="~@/assets/profile.jpg" height="100px">
-    </button>
+    
+      <span class="next-btn btn-grad btn-size btn-text" @click="routeToProfile">
+       <img src="~@/assets/profile.jpg" height="100px">
+      </span>
+
     </div>
     <MainPage/>
 </div>
@@ -45,55 +47,40 @@ export default {
 </script>
 
 <style scoped>
-  h5 {
-    color: #FFFFFF;
-  }
-  .username {
-    color: #FF89B6;
-  }
-  .navi {
-  }
-  .css-q46ro5 {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 400;
-    background: linear-gradient( to top, rgba(18,18,18,0), rgba(18,18,18,1) 20% );
-    text-align: center;
-    width: 95%;
-    height: 300px;
-  }
-  .wrapper {
-    margin-top: 250px;
-    margin-right: 30px;
-    margin-left: 30px;
-  }
-  /* .next-btn {
-    display: inline-block;
-    font-size: 16px;
-    line-height: 32px;
-    height: 50px;
-    padding: 5px 18px;
-    text-align: center;
-    border-radius: 40px;
-    position: absolute;
-    top: 40px;
-    right: 6%;
-    background-color: #FFFFFF;
-    color: #121218;
-    font-weight: 700;
-    -webkit-letter-spacing: -0.2px;
-    -moz-letter-spacing: -0.2px;
-    -ms-letter-spacing: -0.2px;
-    letter-spacing: -0.2px;
-    cursor: pointer;
-  } */
-  .profile-button {
-  border: none;
-  background: none;
-  margin-bottom: 35px;
-  float: right;
-  margin: 10px;
-  }
+h2 {
+  color: #FFFFFF;
+  font-weight: 900;
+}
+.username {
+  color: #FF89B6;
+}
+.css-q46ro5 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 400;
+  background: linear-gradient( to top, rgba(18,18,18,0), rgba(18,18,18,1) 20% );
+  text-align: center;
+  width: 95%;
+  height: 300px;
+}
+.wrapper {
+  margin-top: 250px;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.next-btn {
+  display: inline-block;
+  padding: 0 18px;
+  position: absolute;
+  top: 50px;
+  right: 0%;
+  -webkit-letter-spacing: -0.2px;
+  -moz-letter-spacing: -0.22px;
+  -ms-letter-spacing: -0.2px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
 </style>

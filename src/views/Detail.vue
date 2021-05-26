@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper-detail">
     <button class="button-icon" @click="routeToMain">
       <img src="~@/assets/BackButton.png">
     </button>
@@ -80,7 +80,7 @@ export default {
 </script>
 
 <style>
-.wrapper {
+.wrapper-detail {
   margin: 40px;
   display: flex;
   flex-direction: column;
