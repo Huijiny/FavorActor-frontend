@@ -56,6 +56,7 @@ export default new Vuex.Store({
         headers: { Authorization: `JWT ${token}` },
       })
         .then(res => {
+          console.log(res)
           commit('SET_USER_DATA', res.data)
           return res.data
         })
@@ -118,7 +119,9 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
-        
+    },
+    modifyUserData: function ({ commit }, user) {
+      commit('SET_USER_DATA', user)
     }
   },
   getters: {

@@ -5,6 +5,9 @@
     </div>
     <div>
       <div class="text-box">
+        <button class="btn btn-ov" @click="likeButton">
+          <i class="fa-heart like-button" :class="{ 'fas': this.liked, 'far': !this.liked }"></i>
+        </button>
         <h1 class="actor-name">{{ this.actor.actor.name }}</h1>
         <br>
         <h4 class="actor-detail">출생: <span>{{ this.actor.birth }}</span></h4>
@@ -27,20 +30,33 @@
 
 <script>
 import KProgress from 'k-progress';
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'ActorDetail',
   props: {
     actor: {
-      type: Object
+      type: Object,
     },
+    liked: {
+      type: Boolean,
+    }
   },
   components: {
     KProgress,
   },
+  methods: {
+    likeButton: function () {
+      this.liked = !this.liked
+      this.$emit('change-like', !this.liked)
+    },
+  },
   computed: {
+    ...mapGetters([
+      'getUser',
+      'getToken'
+    ]),
     getImage: function () {
-      console.log("computed get image")
       return `https://image.tmdb.org/t/p/w500${this.actor.actor.profile_path}`
     },
     voteAverage: function () {
@@ -56,12 +72,7 @@ export default {
       return this.voteAverage * 10
     }
   },
-  mounted: function () {
-    console.log('mounted')
-  },
-  created: function () {
-    console.log('created')
-  }
+
 }
 </script>
 
@@ -94,4 +105,13 @@ export default {
 .actor-detail {
   font-weight: 600;
 }
+.like-button {
+  color: #FF89B6;
+  font-size: 40px;
+}
+.btn-ov {
+  padding: 0;
+  margin-bottom: 10px;
+}
+
 </style>

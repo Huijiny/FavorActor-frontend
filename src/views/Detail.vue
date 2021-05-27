@@ -11,6 +11,8 @@
     </MovieDatailModal>
     <ActorDetail
       :actor="actor"
+      :liked="isLiked"
+      @change-like="modifyLiked"
     />
     <ActorDetailKnownFor
       :actor-known-for="actorKnownFor"
@@ -51,20 +53,46 @@ export default {
         },
         birth: null,
       },
+      liked: false,
     }
   },
   methods: {
     routeToMain: function () {
       this.$router.push({ name: 'Main' })
+    },
+    modifyLiked: function (likestatus) {
+      if (likestatus == true) {
+        this.liked = false
+      } else {
+        this.liked = true
+      }
+      this.modifyFavoriteActors()
+    },
+    modifyFavoriteActors: function () {
+      axios({
+        url: `http://127.0.0.1:8000/movies/actor/${this.actor.actor.actor_id}/fav/`,
+        method: 'POST',
+        headers: this.getToken
+      })
+        .then(res => {
+          this.$store.dispatch('modifyUserData', res.data.user)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
   computed: {
     ...mapGetters([
       'getToken',
+      'getUser',
     ]),
     actorKnownFor: function () {
       return this.actor.actor.known_for.slice().sort((a,b) =>  b.vote_average - a.vote_average);
     },
+    isLiked: function () {
+      return this.liked
+    }
   },
   created: function () {
     axios({
@@ -74,6 +102,11 @@ export default {
     })
     .then(res => {
       this.actor = res.data
+      if (this.getUser.favoriteActors.includes(this.actor.actor.actor_id)) {
+        this.liked = true
+      } else {
+        this.liked = false
+      }
     })
     .catch(err => {
       console.log(err)

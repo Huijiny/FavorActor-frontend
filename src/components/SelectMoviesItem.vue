@@ -40,7 +40,6 @@ export default {
   methods: {
     likeButton: function () {
       this.liked =! this.liked
-      console.log(this.liked)
       if (this.liked == true) {
         this.$store.dispatch('setFavoriteMovies', this.item.movie_id)
       } else {
