@@ -27,6 +27,7 @@ export default {
 .btn-grad {
   padding: 10px 45px;
   transition: 0.5s;
+  font-weight: 700;
   background-size: 200% auto;
   color: white;            
 }
@@ -42,6 +43,7 @@ export default {
 }
 .btn-grad:hover {
   background-position: right center; /* change the direction of the change here */
+  font-weight: 700;
   color: #fff;
   text-decoration: none;
 }
@@ -74,6 +76,7 @@ p {
 }
 
 h2 {
+  font-weight: 900;
   color: #FFFFFF;
 }
 </style>

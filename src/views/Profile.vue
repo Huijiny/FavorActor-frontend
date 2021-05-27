@@ -20,6 +20,9 @@
           :key="idx"
           :item="actor"
           class="width-set"
+          :is-profile="true"
+          :is-my-profile="isMe"
+          @delete-actor="deleteActor"
         />
       </div>
       
@@ -33,6 +36,8 @@
           :key="idx"
           :item="movie"
           class="width-set"
+          :is-profile="true"
+          :is-my-profile="isMe"
         />
       </div>
     </div>
@@ -63,6 +68,20 @@ export default {
     routeToMain: function () {
       this.$router.push({ name: 'Main' })
     },
+    deleteActor: function (actorId) {
+      axios({
+        url: `http://127.0.0.1:8000/movies/actor/${actorId}/fav/`,
+        method: 'POST',
+        headers: this.getToken
+      })
+        .then(res => {
+          this.getProfileInfo()
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     followButtonClick: function () {
       this.isFollowed = !this.isFollowed
       axios({
@@ -76,6 +95,23 @@ export default {
         .catch(err => {
           console.log(err)
         })
+    },
+    getProfileInfo: function () {
+      this.user = this.getUser
+      axios({
+        url: `http://127.0.0.1:8000/accounts/${this.$route.query}/`,
+        method: 'GET',
+        headers: this.getToken
+      })
+        .then(res => {
+          this.user = res.data.user
+          this.favoriteActorList = res.data.favorite_actors
+          this.favoriteMovieList = res.data.favorite_movies
+          this.isFollowed = this.getUser.followings.includes(this.user.id)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
   computed: {
@@ -83,23 +119,12 @@ export default {
       'getUser',
       'getToken'
     ]),
+    isMe: function () {
+      return this.getUser.username == this.user.username
+    }
   },
   created: function () {
-    this.user = this.getUser
-    axios({
-      url: `http://127.0.0.1:8000/accounts/${this.$route.query}/`,
-      method: 'GET',
-      headers: this.getToken
-    })
-      .then(res => {
-        this.user = res.data.user
-        this.favoriteActorList = res.data.favorite_actors
-        this.favoriteMovieList = res.data.favorite_movies
-        this.isFollowed = this.getUser.followings.includes(this.user.id)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    this.getProfileInfo()
   }
 }
 </script>

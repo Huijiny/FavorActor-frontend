@@ -36,7 +36,7 @@ export default {
 
 .item-wrapper {
   position: relative;
-  margin: 1% 1%;
+  padding: 0;
 }
 div {
   display: block

@@ -74,6 +74,7 @@ export default {
   padding: 10px 45px;
   transition: 0.5s;
   background-size: 200% auto;
+  font-weight: 700;
   color: white;            
 }
 .btn-text {
@@ -89,6 +90,7 @@ export default {
 .btn-grad:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
+  font-weight: 700;
   text-decoration: none;
 }
 .bgimg {
@@ -112,6 +114,7 @@ p {
 }
 
 h2 {
+  font-weight: 900;
   color: #FFFFFF;
 }
 

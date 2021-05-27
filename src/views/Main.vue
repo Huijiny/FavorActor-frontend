@@ -59,6 +59,7 @@ export default {
 </script>
 
 <style scoped>
+
 h2 {
   color: #FFFFFF;
   font-weight: 900;
@@ -74,13 +75,10 @@ h2 {
   z-index: 400;
   background: linear-gradient( to top, rgba(18,18,18,0), rgba(18,18,18,1) 20% );
   text-align: center;
-  width: 95%;
-  height: 300px;
+  height: 200px;
 }
 .wrapper {
   margin-top: 250px;
-  margin-right: 30px;
-  margin-left: 30px;
 }
 .next-btn {
   display: inline-block;

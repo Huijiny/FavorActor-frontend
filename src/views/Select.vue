@@ -6,9 +6,9 @@
         <h5>좋아하는 
           <span v-if="isActorPage">배우</span>
           <span v-else>영화</span>
-          를 선택해주세요.</h5>
+          를 3개 이상 선택해주세요.</h5>
       </div>
-      <span class="next-btn btn-grad btn-size btn-text" @click="routeToMovieSelect">
+      <span class="next-btn btn-grad btn-size btn-text" @click="routeToMovieSelect" :disabled="isDisabled">
         <span v-if="isActorPage">영화로 고르기</span>
         <span v-else>완료하기</span>
       </span>
@@ -43,7 +43,6 @@ export default {
       if (this.isActorPage == true) {
         this.isActorPage = false
       } else {
-        console.log("asfd")
         this.$store.dispatch('postUserTastes')
       }
       
@@ -53,6 +52,15 @@ export default {
     ...mapGetters([
       'getUser',
     ]),
+    isDisabled: function () {
+      if (this.isActorPage && this.user.favoriteActors.length < 3) {
+        return true
+      } else if (!this.isActorPage && this.user.favoriteMovies.length < 3) {
+        return true
+      } else {
+        return false
+      }
+    },
   },
   created: function () {
     this.user = this.getUser
@@ -62,9 +70,11 @@ export default {
 
 <style scoped>
   h5 {
+    font-weight: 700;
     color: #FFFFFF;
   }
   .username {
+    font-weight: 700;
     color: #FF89B6;
   }
   .navi {
@@ -88,15 +98,14 @@ export default {
   }
   .next-btn {
     display: inline-block;
-    font-size: 15px;
-    line-height: 32px;
-    height: 48px;
-    padding: 0 18px;
+    font-size: 13px;
+    height: 40px;
+    padding: 0 15px;
     text-align: center;
     border-radius: 40px;
     position: absolute;
-    top: 40px;
-    right: 6%;
+    top: 35px;
+    right: 3%;
     background-color: #FFFFFF;
     color: #121218;
     font-weight: 700;
@@ -111,25 +120,24 @@ export default {
     padding: 10px 5px;
     transition: 0.5s;
     background-size: 200% auto;
+    font-weight: 700;
     color: white;            
   }
   .btn-text {
-    text-transform: uppercase;
-    text-align: center;
     font-family: 'Noto Sans KR', sans-serif;
   }
   .btn-size {
-    width: 10%;
-    border-radius: 30px;
-    border: none;
+    width: 130px;
   }
   .btn-grad:hover {
     background-position: right center; /* change the direction of the change here */
     color: #fff;
+    font-weight: 700;
     text-decoration: none;
   }
   .btn-grad:disabled {
     /* background-image: linear-gradient(to left, #FC466B 0%, #4A00E0  50%, #FC466B  100%) */
     background-color: black;
   }
+  span[disabled] { pointer-events: none;  opacity: 0.5;}
 </style>

@@ -5,6 +5,7 @@
         v-for="(actor, idx) in actorList"
         :key="idx"
         :item="actor"
+        :is-profile="false"
       />
     </div>
   </div>
