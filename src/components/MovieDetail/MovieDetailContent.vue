@@ -18,7 +18,7 @@
 
 <script>
 import axios from 'axios'
-import Comments from './Comments.vue'
+import Comments from '../Comments.vue'
 
 export default {
   name: 'MovieDetailContent',

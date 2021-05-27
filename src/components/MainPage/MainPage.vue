@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import MainPageItem from './MainPageItem.vue'
+import MainPageItem from '../MainPage/MainPageItem.vue'
 import { mapGetters } from 'vuex'
 
 export default {
