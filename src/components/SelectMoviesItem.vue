@@ -4,9 +4,9 @@
       <img :src="posterPath"/>
     </div>
     <div :class="{ 'item-selected ': liked, 'overlay': !liked }">
-      <button class="button-icon-nomargin btn-position" v-if="isMyProfile"> 
+      <!-- <button class="button-icon-nomargin btn-position" v-if="isMyProfile"> 
         <img src="~@/assets/close.png">
-      </button>
+      </button> -->
       <div class="text">
         <h4>{{ item.title }}</h4>
         <button  v-if="isProfile==false" class="btn mt-2" @click="likeButton">

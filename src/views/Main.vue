@@ -75,7 +75,7 @@ h2 {
   z-index: 400;
   background: linear-gradient( to top, rgba(18,18,18,0), rgba(18,18,18,1) 20% );
   text-align: center;
-  height: 300px;
+  height: 200px;
 }
 .wrapper {
   margin-top: 250px;
